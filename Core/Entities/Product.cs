@@ -1,8 +1,13 @@
 namespace Core.Entities
 {
-    public class Product
+    using System.Collections.Generic;
+    using Core.Entities;
+    public class Product : BaseEntity
     {
-        public int Id { get; set; }
+        public Product()
+        {
+            this.Product_ProductCategories = new HashSet<Product_ProductCategory>();
+        }
 
         public string Name { get; set; }
 
@@ -13,5 +18,9 @@ namespace Core.Entities
         public decimal GrossWeight { get; set; }
 
         public decimal Price { get; set; }
+
+        public string PictureUrl { get; set; }
+
+        public virtual ICollection<Product_ProductCategory> Product_ProductCategories { get; set; }
     }
 }

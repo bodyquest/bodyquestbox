@@ -1,0 +1,22 @@
+[
+  {
+    "ProductId": 1,
+    "ProductCategoryId": 15
+  },
+  {
+    "ProductId": 2,
+    "ProductCategoryId": 12
+  },
+  {
+    "ProductId": 3,
+    "ProductCategoryId": 13
+  },
+  {
+    "ProductId": 4,
+    "ProductCategoryId": 25
+  },
+  {
+    "ProductId": 5,
+    "ProductCategoryId": 16
+  }
+]
