@@ -1,0 +1,338 @@
+[
+  {
+    "Id": 1,
+    "SkuName": "chalk_block",
+    "ProductId": 1,
+    "Price": 3.9,
+    "StockQty": 500
+  },
+  {
+    "Id": 2,
+    "SkuName": "ring_standard",
+    "ProductId": 2,
+    "Price": 54,
+    "StockQty": 80
+  },
+  {
+    "Id": 3,
+    "SkuName": "rings_thick",
+    "ProductId": 2,
+    "Price": 54,
+    "StockQty": 0
+  },
+  {
+    "Id": 4,
+    "SkuName": "grips_white_XS_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 5,
+    "SkuName": "grips_white_S_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 6,
+    "SkuName": "grips_white_M_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 7,
+    "SkuName": "grips_white_L_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 8,
+    "SkuName": "grips_white_XL_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 9,
+    "SkuName": "grips_white_XS_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 10,
+    "SkuName": "grips_white_S_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 11,
+    "SkuName": "grips_white_M_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 12,
+    "SkuName": "grips_white_L_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 13,
+    "SkuName": "grips_white_XL_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 14,
+    "SkuName": "grips_white_XS_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 15,
+    "SkuName": "grips_white_S_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 16,
+    "SkuName": "grips_white_M_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 17,
+    "SkuName": "grips_white_L_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 18,
+    "SkuName": "grips_white_XL_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 19,
+    "SkuName": "grips_black_XS_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 20,
+    "SkuName": "grips_black_S_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 21,
+    "SkuName": "grips_black_M_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 22,
+    "SkuName": "grips_black_L_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 23,
+    "SkuName": "grips_black_XL_2-holes",
+    "ProductId": 3,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 24,
+    "SkuName": "grips_black_XS_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 25,
+    "SkuName": "grips_black_S_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 26,
+    "SkuName": "grips_black_M_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 27,
+    "SkuName": "grips_black_L_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 28,
+    "SkuName": "grips_black_XL_3-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 1
+  },
+  {
+    "Id": 29,
+    "SkuName": "grips_black_XS_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 0
+  },
+  {
+    "Id": 30,
+    "SkuName": "grips_black_S_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 0
+  },
+  {
+    "Id": 31,
+    "SkuName": "grips_black_M_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 0
+  },
+  {
+    "Id": 32,
+    "SkuName": "grips_black_L_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 0
+  },
+  {
+    "Id": 33,
+    "SkuName": "grips_black_XL_4-holes",
+    "ProductId": 3,
+    "Price": 19,
+    "StockQty": 0
+  },
+  {
+    "Id": 34,
+    "SkuName": "wraps_navy",
+    "ProductId": 4,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 35,
+    "SkuName": "wraps_blue",
+    "ProductId": 4,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 36,
+    "SkuName": "wraps_red",
+    "ProductId": 4,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 37,
+    "SkuName": "wraps_camo",
+    "ProductId": 4,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 38,
+    "SkuName": "wraps_icons",
+    "ProductId": 4,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 39,
+    "SkuName": "wraps_hero",
+    "ProductId": 4,
+    "Price": 16,
+    "StockQty": 1
+  },
+  {
+    "Id": 40,
+    "SkuName": "cera_red_8bear",
+    "ProductId": 5,
+    "Price": 345,
+    "StockQty": 1
+  },
+  {
+    "Id": 41,
+    "SkuName": "cera_red_10bear",
+    "ProductId": 5,
+    "Price": 345,
+    "StockQty": 1
+  },
+  {
+    "Id": 42,
+    "SkuName": "cera_red_bushing",
+    "ProductId": 5,
+    "Price": 345,
+    "StockQty": 1
+  },
+  {
+    "Id": 43,
+    "SkuName": "cera_blue_8bear",
+    "ProductId": 5,
+    "Price": 345,
+    "StockQty": 1
+  },
+  {
+    "Id": 44,
+    "SkuName": "cera_blue_10bear",
+    "ProductId": 5,
+    "Price": 345,
+    "StockQty": 1
+  },
+  {
+    "Id": 45,
+    "SkuName": "cera_blue_bushing",
+    "ProductId": 5,
+    "Price": 345,
+    "StockQty": 1
+  },
+  {
+    "Id": 46,
+    "SkuName": "cera_od_8bear",
+    "ProductId": 5,
+    "Price": 345,
+    "StockQty": 1
+  },
+  {
+    "Id": 47,
+    "SkuName": "cera_od_10bear",
+    "ProductId": 5,
+    "Price": 345,
+    "StockQty": 1
+  },
+  {
+    "Id": 48,
+    "SkuName": "cera_od_bushing",
+    "ProductId": 5,
+    "Price": 345,
+    "StockQty": 1
+  }
+]

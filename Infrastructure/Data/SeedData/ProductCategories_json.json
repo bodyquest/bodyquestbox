@@ -226,5 +226,11 @@
     "Name": "MassageAccessories",
     "ParentId": 8,
     "ImageUrl": "https://res.cloudinary.com/dotnetdari/image/upload/v1591205555/bodyquest/mrubgsbuphg4ekfycsj4.jpg"
+  },
+  {
+    "Id": 39,
+    "Name": "BarsAndPlates",
+    "ParentId": 20,
+    "ImageUrl": "https://res.cloudinary.com/dotnetdari/image/upload/v1605642466/bodyquest/Bars_And_Plates_zt3gyt.jpg"
   }
 ]

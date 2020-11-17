@@ -59,7 +59,75 @@ namespace Infrastructure.Data
                     await context.SaveChangesAsync();
                 }
 
-                
+                if (!context.Options.Any())
+                {
+                    var optionsData = File.ReadAllText("../Infrastructure/Data/SeedData/Options_json.json");
+
+                    var options = JsonSerializer.Deserialize<List<Option>>(optionsData);
+
+                    foreach (var item in options)
+                    {
+                        context.Options.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
+                if (!context.OptionValues.Any())
+                {
+                    var optionValuesData = File.ReadAllText("../Infrastructure/Data/SeedData/OptionValues_json.json");
+
+                    var optionValues = JsonSerializer.Deserialize<List<OptionValue>>(optionValuesData);
+
+                    foreach (var item in optionValues)
+                    {
+                        context.OptionValues.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
+                if (!context.ProductVariantOptions.Any())
+                {
+                    var productVariantOptionsData = File.ReadAllText("../Infrastructure/Data/SeedData/ProductVariantOptions_json.json");
+
+                    var productVariantOptions = JsonSerializer.Deserialize<List<ProductVariantOption>>(productVariantOptionsData);
+
+                    foreach (var item in productVariantOptions)
+                    {
+                        context.ProductVariantOptions.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
+                if (!context.ProductVariants.Any())
+                {
+                    var productVariantsData = File.ReadAllText("../Infrastructure/Data/SeedData/ProductVariants_json.json");
+
+                    var productVariants = JsonSerializer.Deserialize<List<ProductVariant>>(productVariantsData);
+
+                    foreach (var item in productVariants)
+                    {
+                        context.ProductVariants.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
+                if (!context.SKUs.Any())
+                {
+                    var skuData = File.ReadAllText("../Infrastructure/Data/SeedData/SKUs_json.json");
+
+                    var Skus = JsonSerializer.Deserialize<List<SKU>>(skuData);
+
+                    foreach (var item in Skus)
+                    {
+                        context.SKUs.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {

@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "ProductId": 1,
+    "OptionId": 7
+  },
+  {
+    "Id": 2,
+    "ProductId": 2,
+    "OptionId": 3
+  },
+  {
+    "Id": 3,
+    "ProductId": 3,
+    "OptionId": 2
+  },
+  {
+    "Id": 4,
+    "ProductId": 3,
+    "OptionId": 3
+  },
+  {
+    "Id": 5,
+    "ProductId": 3,
+    "OptionId": 9
+  },
+  {
+    "Id": 6,
+    "ProductId": 4,
+    "OptionId": 2
+  },
+  {
+    "Id": 7,
+    "ProductId": 5,
+    "OptionId": 2
+  },
+  {
+    "Id": 8,
+    "ProductId": 5,
+    "OptionId": 4
+  }
+]

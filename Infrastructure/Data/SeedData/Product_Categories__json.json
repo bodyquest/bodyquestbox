@@ -4,6 +4,14 @@
     "ProductCategoryId": 15
   },
   {
+    "ProductId": 1,
+    "ProductCategoryId": 26
+  },
+  {
+    "ProductId": 1,
+    "ProductCategoryId": 30
+  },
+  {
     "ProductId": 2,
     "ProductCategoryId": 12
   },
@@ -12,8 +20,20 @@
     "ProductCategoryId": 13
   },
   {
+    "ProductId": 3,
+    "ProductCategoryId": 26
+  },
+  {
+    "ProductId": 4,
+    "ProductCategoryId": 19
+  },
+  {
     "ProductId": 4,
     "ProductCategoryId": 25
+  },
+  {
+    "ProductId": 4,
+    "ProductCategoryId": 30
   },
   {
     "ProductId": 5,

@@ -1,0 +1,47 @@
+[
+  {
+    "Id": 1,
+    "Name": "Weight",
+    "": ""
+  },
+  {
+    "Id": 2,
+    "Name": "Color",
+    "": ""
+  },
+  {
+    "Id": 3,
+    "Name": "Size",
+    "": ""
+  },
+  {
+    "Id": 4,
+    "Name": "Sleeve Rotation",
+    "": ""
+  },
+  {
+    "Id": 5,
+    "Name": "Diameter",
+    "": ""
+  },
+  {
+    "Id": 6,
+    "Name": "Material",
+    "": ""
+  },
+  {
+    "Id": 7,
+    "Name": "Consistency",
+    "": ""
+  },
+  {
+    "Id": 8,
+    "Name": "Length",
+    "": ""
+  },
+  {
+    "Id": 9,
+    "Name": "Holes",
+    "": ""
+  }
+]

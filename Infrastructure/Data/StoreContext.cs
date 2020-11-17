@@ -12,6 +12,12 @@ namespace Infrastructure.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Product_ProductCategory> Products_ProductCategories { get; set; }
+        public DbSet<Option> Options { get; set; }
+        public DbSet<OptionValue> OptionValues { get; set; }
+        public DbSet<ProductVariant> ProductVariants { get; set; }
+        public DbSet<ProductVariantOption> ProductVariantOptions { get; set; }
+        public DbSet<SKU> SKUs { get; set; }
+
 
        protected override void OnModelCreating(ModelBuilder modelBuilder)
        {
