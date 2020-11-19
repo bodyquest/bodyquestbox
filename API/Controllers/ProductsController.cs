@@ -12,9 +12,7 @@ namespace API.Controllers
     using Core.Models;
     using AutoMapper;
 
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseApiController
     {
         private readonly IProductRepository simpleRepo;
         private readonly IGenericRepository<Product> productsRepo;

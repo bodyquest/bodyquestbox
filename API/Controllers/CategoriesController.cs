@@ -6,9 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CategoriesController : ControllerBase
+    public class CategoriesController : BaseApiController
     {
         private readonly ICategoryRepository repo;
         public CategoriesController(ICategoryRepository repo)
