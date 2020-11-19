@@ -11,6 +11,8 @@ namespace API.Controllers
     using Core.Specifications;
     using Core.Models;
     using AutoMapper;
+    using API.Controllers.Errors;
+    using Microsoft.AspNetCore.Http;
 
     public class ProductsController : BaseApiController
     {
@@ -47,14 +49,19 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductToReturnDto>> GetProductAsync(int id)
         {
-            var spec = new ProductsWithVariantsAndVariantOptionsAndSKUs(id);
+            //var spec = new ProductsWithVariantsAndVariantOptionsAndSKUs(id);
 
             var product = await this.simpleRepo.GetProductByIdAsync(id);
 
             // var mappedProduct = mapper.Map<Product, ProductToReturnDto>(product);
-
+            if (product == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
             return product;
             // return await this.productsRepo.GetEntityWithSpec(spec);
         }
