@@ -215,7 +215,7 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("Core.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductVariants")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -230,7 +230,7 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("Core.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductVariantOptions")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -254,7 +254,7 @@ namespace Infrastructure.Data.Migrations
             modelBuilder.Entity("Core.Entities.SKU", b =>
                 {
                     b.HasOne("Core.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("SKUs")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

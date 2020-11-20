@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Core.Entities
 {
     public class SKU : BaseEntity
@@ -11,5 +13,6 @@ namespace Core.Entities
         public int ProductId { get; set; }
         public Product Product { get; set; }
 
+        public ICollection<OptionValue> OptionValues { get; set; }
     }
 }

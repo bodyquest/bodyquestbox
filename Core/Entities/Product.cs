@@ -7,6 +7,9 @@ namespace Core.Entities
         public Product()
         {
             this.Product_ProductCategories = new HashSet<Product_ProductCategory>();
+            this.SKUs = new HashSet<SKU>();
+            this.ProductVariants = new HashSet<ProductVariant>();
+            this.ProductVariantOptions = new HashSet<ProductVariantOption>();
         }
 
         public string Name { get; set; }
@@ -22,5 +25,11 @@ namespace Core.Entities
         public string PictureUrl { get; set; }
 
         public virtual ICollection<Product_ProductCategory> Product_ProductCategories { get; set; }
+
+        public virtual ICollection<SKU> SKUs { get; set; }
+
+        public ICollection<ProductVariantOption> ProductVariantOptions { get; set; }
+
+        public ICollection<ProductVariant> ProductVariants { get; set; }
     }
 }
