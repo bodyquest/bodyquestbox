@@ -13,6 +13,7 @@ namespace API.Controllers
     using AutoMapper;
     using API.Controllers.Errors;
     using Microsoft.AspNetCore.Http;
+    using API.Helpers;
 
     public class ProductsController : BaseApiController
     {
@@ -40,15 +41,22 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProductsAsync()
+        public async Task<ActionResult<Pagination<Product>>> GetProductsAsync(
+            [FromQuery] ProductSpecParams productParams)
         {
-            var spec = new ProductsWithVariantsAndVariantOptionsAndSKUs();
+            var spec = new ProductsWithVariantsAndVariantOptionsAndSKUs(productParams);
+            var countSpec = new ProductWithFiltersForCountSpecification(productParams);
+
+            var totalItems = await this.productsRepo.CountAsync(countSpec);
             var products = await this.productsRepo.ListAsync(spec);
 
-            return Ok(products);
+            return Ok(new Pagination<Product>(
+                productParams.PageIndex,
+                productParams.PageSize,
+                totalItems, products));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductToReturnDto>> GetProductAsync(int id)
@@ -59,7 +67,7 @@ namespace API.Controllers
 
             // var mappedProduct = mapper.Map<Product, ProductToReturnDto>(product);
             if (product == null)
-            {
+            { 
                 return NotFound(new ApiResponse(404));
             }
             return product;
@@ -69,7 +77,7 @@ namespace API.Controllers
         [HttpGet("skus")]
         public async Task<ActionResult<List<SKU>>> GetProductSkusAsync()
         {
-            var spec = new ProductsWithVariantsAndVariantOptionsAndSKUs();
+            //var spec = new ProductsWithVariantsAndVariantOptionsAndSKUs();
             // var skus = await this.skusRepo.ListAsync(spec);
 
             return Ok();//skus);
