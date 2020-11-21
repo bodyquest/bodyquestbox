@@ -1,0 +1,15 @@
+@font-face {
+	font-family: 'Alrns';
+	src: url('fonts/Ailerons-Typeface.eot');
+	src: local('H_Gothic'), url('fonts/Ailerons-Typeface.woff') format('woff'), url('fonts/Ailerons-Typeface.ttf') format('truetype'), url('fonts/Ailerons-Typeface.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'H_Gothic';
+	src: url('fonts/Handel_Gothic_Ex.eot');
+	src: local('H_Gothic'), url('fonts/Handel_Gothic_Ex.woff') format('woff'), url('fonts/Handel_Gothic_Ex.ttf') format('truetype'), url('fonts/Handel_Gothic_Ex.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

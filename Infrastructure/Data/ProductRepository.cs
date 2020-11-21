@@ -6,6 +6,7 @@ namespace Infrastructure.Data
     using Core.Entities;
     using Core.Interfaces;
     using Core.Models;
+    using Core.Specifications;
     using Microsoft.EntityFrameworkCore;
 
     public class ProductRepository : IProductRepository
@@ -23,7 +24,9 @@ namespace Infrastructure.Data
                 .Where(p => p.Id == id)
                 .Select(p => new ProductToReturnDto
                 {
+                    Id = p.Id,
                     Name = p.Name,
+                    Price = p.Price,
                     ShortDescription = p.ShortDescription,
                     PictureUrl = p.PictureUrl,
                     Options = p.ProductVariants
@@ -55,21 +58,186 @@ namespace Infrastructure.Data
             return product;
         }
 
-        public async Task<IReadOnlyList<Product>> GetProductsAsync(string sort)
+        public async Task<IReadOnlyList<ProductToReturnDto>> GetProductsAsync(ProductSpecParams specParams)
         {
-            var products = await this.context.Products.ToListAsync();
-
-            if (sort == "priceAsc")
+            var products = new List<ProductToReturnDto>();
+            if (!string.IsNullOrEmpty(specParams.Search))
             {
-                products.OrderBy(x => x.Price);
-            }
-            else if(sort == "priceDesc")
-            {
-                products.OrderByDescending(x => x.Price);
+                //x.Name.ToLower().Contains(specParams.Search)
+                if (specParams.Sort == "priceAsc")
+                {
+                    products =  await this.context.Products
+                    .Where(p => p.Name.ToLower().Contains(specParams.Search))
+                    .Select(p => new ProductToReturnDto
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Price = p.Price,
+                        ShortDescription = p.ShortDescription,
+                        PictureUrl = p.PictureUrl,
+                        Options = p.ProductVariants
+                            .Select(pv => new ProductOptionsDto
+                            {
+                                Id = pv.Option.Id,
+                                Name = pv.Option.Name,
+                            }),
+                        OptionValues = p.ProductVariantOptions
+                            .Select(pvo => new ValueNameDto
+                            {
+                                OptionId = pvo.OptionValue.Option.Id,
+                                ValueName = pvo.OptionValue.ValueName
+                            })
+                    })
+                    .OrderBy(x => x.Price)
+                    .Skip(specParams.PageSize * (specParams.PageIndex - 1))
+                    .Take(specParams.PageSize)
+                    .ToListAsync();
+                }
+                else if(specParams.Sort == "priceDesc")
+                {
+                    products =  await this.context.Products
+                    .Where(p => p.Name.ToLower().Contains(specParams.Search))
+                    .Select(p => new ProductToReturnDto
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Price = p.Price,
+                        ShortDescription = p.ShortDescription,
+                        PictureUrl = p.PictureUrl,
+                        Options = p.ProductVariants
+                            .Select(pv => new ProductOptionsDto
+                            {
+                                Id = pv.Option.Id,
+                                Name = pv.Option.Name,
+                            }),
+                        OptionValues = p.ProductVariantOptions
+                            .Select(pvo => new ValueNameDto
+                            {
+                                OptionId = pvo.OptionValue.Option.Id,
+                                ValueName = pvo.OptionValue.ValueName
+                            })
+                    })
+                    .OrderByDescending(x => x.Price)
+                    .Skip(specParams.PageSize * (specParams.PageIndex - 1))
+                    .Take(specParams.PageSize)
+                    .ToListAsync();
+                }
+                else
+                {
+                    products =  await this.context.Products
+                    .Where(p => p.Name.ToLower().Contains(specParams.Search))
+                    .Select(p => new ProductToReturnDto
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Price = p.Price,
+                        ShortDescription = p.ShortDescription,
+                        PictureUrl = p.PictureUrl,
+                        Options = p.ProductVariants
+                            .Select(pv => new ProductOptionsDto
+                            {
+                                Id = pv.Option.Id,
+                                Name = pv.Option.Name,
+                            }),
+                        OptionValues = p.ProductVariantOptions
+                            .Select(pvo => new ValueNameDto
+                            {
+                                OptionId = pvo.OptionValue.Option.Id,
+                                ValueName = pvo.OptionValue.ValueName
+                            })
+                    })
+                    .OrderBy(x => x.Name)
+                    .Skip(specParams.PageSize * (specParams.PageIndex - 1))
+                    .Take(specParams.PageSize)
+                    .ToListAsync();
+                }
             }
             else
             {
-                products.OrderBy(x => x.Name);
+                if (specParams.Sort == "priceAsc")
+                {
+                    products =  await this.context.Products
+                    .Select(p => new ProductToReturnDto
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Price = p.Price,
+                        ShortDescription = p.ShortDescription,
+                        PictureUrl = p.PictureUrl,
+                        Options = p.ProductVariants
+                            .Select(pv => new ProductOptionsDto
+                            {
+                                Id = pv.Option.Id,
+                                Name = pv.Option.Name,
+                            }),
+                        OptionValues = p.ProductVariantOptions
+                            .Select(pvo => new ValueNameDto
+                            {
+                                OptionId = pvo.OptionValue.Option.Id,
+                                ValueName = pvo.OptionValue.ValueName
+                            })
+                    })
+                    .OrderBy(x => x.Price)
+                    .Skip(specParams.PageSize * (specParams.PageIndex - 1))
+                    .Take(specParams.PageSize)
+                    .ToListAsync();
+                }
+                else if(specParams.Sort == "priceDesc")
+                {
+                    products =  await this.context.Products
+                    .Select(p => new ProductToReturnDto
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Price = p.Price,
+                        ShortDescription = p.ShortDescription,
+                        PictureUrl = p.PictureUrl,
+                        Options = p.ProductVariants
+                            .Select(pv => new ProductOptionsDto
+                            {
+                                Id = pv.Option.Id,
+                                Name = pv.Option.Name,
+                            }),
+                        OptionValues = p.ProductVariantOptions
+                            .Select(pvo => new ValueNameDto
+                            {
+                                OptionId = pvo.OptionValue.Option.Id,
+                                ValueName = pvo.OptionValue.ValueName
+                            })
+                    })
+                    .OrderByDescending(x => x.Price)
+                    .Skip(specParams.PageSize * (specParams.PageIndex - 1))
+                    .Take(specParams.PageSize)
+                    .ToListAsync();
+                }
+                else
+                {
+                    products =  await this.context.Products
+                    .Select(p => new ProductToReturnDto
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Price = p.Price,
+                        ShortDescription = p.ShortDescription,
+                        PictureUrl = p.PictureUrl,
+                        Options = p.ProductVariants
+                            .Select(pv => new ProductOptionsDto
+                            {
+                                Id = pv.Option.Id,
+                                Name = pv.Option.Name,
+                            }),
+                        OptionValues = p.ProductVariantOptions
+                            .Select(pvo => new ValueNameDto
+                            {
+                                OptionId = pvo.OptionValue.Option.Id,
+                                ValueName = pvo.OptionValue.ValueName
+                            })
+                    })
+                    .OrderBy(x => x.Name)
+                    .Skip(specParams.PageSize * (specParams.PageIndex - 1))
+                    .Take(specParams.PageSize)
+                    .ToListAsync();
+                }
             }
 
             return products;

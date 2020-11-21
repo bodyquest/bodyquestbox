@@ -16,8 +16,8 @@ namespace API.Extensions
             {
                 c.SwaggerDoc("v1", new OpenApiInfo 
                 {
-                    Version = "v1",
                     Title = "Bodyquest API",
+                    Version = "v1",
                     Description = "My first ASP.NET Core Web API"
                 });
 

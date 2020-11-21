@@ -51,10 +51,5 @@ namespace Core.Specifications
             Take = take;
             IsPagingEnabled = true;
         }
-
-        protected void brb ()
-        {
-            
-        }
     }
 }

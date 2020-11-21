@@ -41,16 +41,23 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<Pagination<Product>>> GetProductsAsync(
+        public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProductsAsync(
             [FromQuery] ProductSpecParams productParams)
         {
             var spec = new ProductsWithVariantsAndVariantOptionsAndSKUs(productParams);
             var countSpec = new ProductWithFiltersForCountSpecification(productParams);
 
-            var totalItems = await this.productsRepo.CountAsync(countSpec);
-            var products = await this.productsRepo.ListAsync(spec);
+            // var totalItems = await this.productsRepo.CountAsync(countSpec);
 
-            return Ok(new Pagination<Product>(
+            var totalItems = 0;
+            var products = await this.simpleRepo.GetProductsAsync(productParams);
+
+            if (products != null)
+            {
+                totalItems = products.Count();
+            }
+
+            return Ok(new Pagination<ProductToReturnDto>(
                 productParams.PageIndex,
                 productParams.PageSize,
                 totalItems, products));

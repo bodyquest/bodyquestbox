@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Dropdown navbar</title>
+    <link rel="stylesheet"
+          href="style.css">
+</head>
+
+<body>
+    <div class="topnav"
+         id="myTopnav">
+        <a href="#home"
+           class="active">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <div class="dropdown">
+            <button class="dropbtn">Shop
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="left">
+                    <a class="first-category"
+                    href="#">Gymnastics</a>
+                 <a class="second-category"
+                    href="#">Weightlifting</a>
+                 <a class="third-category"
+                    href="#">Strength & Conditioning</a>
+                    <a class="third-category"
+                    href="#">Wraps & Support</a>
+                    <a class="third-category"
+                    href="#">Strongman</a>
+                    <a class="third-category"
+                    href="#">Product Packages</a>
+                    <a class="third-category"
+                    href="#">Facility Equipment</a>
+                    <a class="third-category"
+                    href="#">Mobility</a>
+                </div>
+
+                <section class="carousel1">
+                    <ul>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/cutters.jpg"
+                                 alt="Cookie cutters">
+                            <p>Cookie cutters</p>
+                        </li>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/sheets.jpg"
+                                 alt="Baking sheets">
+                            <p>Baking sheets</p>
+                        </li>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/bowls.jpg"
+                                 alt="">
+                            <p>Butter bowls</p>
+                        </li>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/rolling_pin.jpg"
+                                 alt="">
+                            <p>Rolling pin</p>
+                        </li>
+                    </ul>
+    
+                    <div class="button-bottom">
+                        Shop now!
+                    </div>
+                </section>
+                <section class="carousel2">
+                    <ul>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/cutters.jpg"
+                                 alt="Cookie cutters">
+                            <p>Basimu</p>
+                        </li>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/sheets.jpg"
+                                 alt="Baking sheets">
+                            <p>Qkata Rabota</p>
+                        </li>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/bowls.jpg"
+                                 alt="">
+                            <p>Maliii</p>
+                        </li>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/rolling_pin.jpg"
+                                 alt="">
+                            <p>Ihaaa</p>
+                        </li>
+                    </ul>
+    
+                    <div class="button-bottom">
+                        Shop now!
+                    </div>
+                </section>
+                <section class="carousel3">
+                    <ul>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/cutters.jpg"
+                                 alt="Cookie cutters">
+                            <p>Recipes</p>
+                        </li>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/sheets.jpg"
+                                 alt="Baking sheets">
+                            <p>Smoothies</p>
+                        </li>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/bowls.jpg"
+                                 alt="">
+                            <p>Salads</p>
+                        </li>
+                        <li>
+                            <img src="./Requirements-and-Resources/Media/rolling_pin.jpg"
+                                 alt="">
+                            <p>Magnesium</p>
+                        </li>
+                    </ul>
+    
+                    <div class="button-bottom">
+                        Shop now!
+                    </div>
+                </section>
+            </div>
+
+        </div>
+        <a href="#about">About</a>
+        <a href="javascript:void(0);"
+           class="icon"
+           onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <script>
+        let hoverLink1 = document.querySelector(".first-category");
+        let hoverLink2 = document.querySelector(".second-category");
+        let hoverLink3 = document.querySelector(".third-category");
+
+        let carousel1Element = document.querySelector(".carousel1");
+        let carousel2Element = document.querySelector(".carousel2");
+        let carousel3Element = document.querySelector(".carousel3");
+
+
+        hoverLink1.addEventListener("mouseover", function() {
+            carousel2Element.style.display = "none";
+            carousel3Element.style.display = "none";
+
+            carousel1Element.style.display = "flex";
+            carousel1Element.style["flex-flow"] = "row wrap";
+            carousel1Element.style["align-items"] = "center";
+            carousel1Element.style.width = "500px";
+            // carousel1Element.style["margin-left"]= "35px";
+            carousel1Element.style.opacity = "1";
+            carousel1Element.style["background-color"]= "#eeeeee75";
+
+            hoverLink1.style["background-color"] = "rgb(213, 59, 59)";
+            hoverLink1.style["border-bottom"] = " 3px solid white";
+
+        });
+
+        hoverLink1.addEventListener("mouseleave", function() {
+
+            carousel1Element.addEventListener("mouseover",function(e) {
+                carousel1Element.style.display = "flex";
+                carousel1Element.style["flex-flow"] = "row wrap";
+                carousel1Element.style["align-items"] = "center";
+                carousel1Element.style.width = "500px";
+                // carousel1Element.style["margin-left"]= "35px";
+                carousel1Element.style.opacity = "1";
+                carousel1Element.style["background-color"] = "#80808075";
+
+                hoverLink1.style["background-color"] = "rgb(213, 59, 59)";
+                hoverLink1.style["border-bottom"] = " 3px solid white";
+            });
+
+            carousel1Element.style.display = "none";
+            carousel2Element.style.display = "none";
+            carousel3Element.style.display = "none";
+            hoverLink1.style["background-color"] = "transparent";
+            hoverLink1.style["border-bottom"] = "1px solid rgb(162, 162, 162)";
+        });
+
+        hoverLink2.addEventListener("mouseover", function() {
+            carousel1Element.style.display = "none";
+            
+            carousel2Element.style.display = "flex";
+            carousel2Element.style["flex-flow"] = "row wrap";
+            carousel2Element.style["align-items"] = "center";
+            carousel2Element.style.width = "500px";
+            // carousel1Element.style["margin-left"]= "35px";
+            carousel2Element.style.opacity = "1";
+            carousel2Element.style["background-color"]= "#eeeeee75";
+
+            hoverLink2.style["background-color"] = "rgb(213, 59, 59)";
+            hoverLink2.style["border-bottom"] = " 3px solid white";
+
+        });
+
+        hoverLink2.addEventListener("mouseleave", function() {
+
+        carousel2Element.addEventListener("mouseover",function(e) {
+            carousel2Element.style.display = "flex";
+            carousel2Element.style["flex-flow"] = "row wrap";
+            carousel2Element.style["align-items"] = "center";
+            carousel2Element.style.width = "500px";
+            // carousel1Element.style["margin-left"]= "35px";
+            carousel2Element.style.opacity = "1";
+            carousel2Element.style["background-color"] = "#80808075";
+
+            hoverLink2.style["background-color"] = "rgb(213, 59, 59)";
+            hoverLink2.style["border-bottom"] = " 3px solid white";
+        });
+
+            carousel1Element.style.display = "none";
+
+            carousel2Element.style.display = "none";
+            hoverLink2.style["background-color"] = "transparent";
+            hoverLink2.style["border-bottom"] = "1px solid rgb(162, 162, 162)";
+        });
+
+    </script>
+</body>
+
+</html>
