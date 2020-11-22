@@ -1,0 +1,72 @@
+h5 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0.2em;
+    padding: 0 0.5em;
+}
+
+h6 {
+    text-align: center;
+    margin-bottom: 1em;
+    padding: 0 0.5em;
+}
+
+.image-container {
+    // width: auto;
+    // height: 250px;
+    height: 250px;
+    background: transparent no-repeat center;
+    background-size: cover;
+    overflow: hidden;
+    border-top-left-radius: 0.8em;
+    border-top-right-radius: 0.8em;
+    margin-bottom: 1.5em;
+}
+
+.product-card p {
+    overflow: hidden;
+    opacity: 0.5;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    margin: 0 0.7em 0.7em 0.7em;
+}
+
+.buttons {
+    margin: 0 0.5em 0.5em 0.5em;
+}
+
+.btn {
+    border: 2px solid #ffffff99;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 1.2;
+    min-height: 1.5em;
+    min-width: 5em;
+    outline: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    color: white;
+    border: 2px solid #fff;
+}
+
+.buttons .btn-primary {
+    border: none;
+    border-radius: 30px;
+
+    background-image: linear-gradient(to right, #E72B3F, #ff635d);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    color: white;
+}
+
+.buttons .btn-primary:hover {
+    border: none;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}

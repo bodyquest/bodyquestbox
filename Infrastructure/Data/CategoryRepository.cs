@@ -5,6 +5,7 @@ namespace Infrastructure.Data
     using System.Threading.Tasks;
     using Core.Entities;
     using Core.Interfaces;
+    using Core.Models;
     using Microsoft.EntityFrameworkCore;
 
     public class CategoryRepository : ICategoryRepository
@@ -21,6 +22,20 @@ namespace Infrastructure.Data
         {
             return await this.context.ProductCategories
                 .FirstOrDefaultAsync(pc => pc.Id == id);
+        }
+
+        public async Task<IReadOnlyList<MainCategoryDto>> GetMainCategoriesAsync()
+        {
+            var result = await this.context.ProductCategories
+                .Select(c => new MainCategoryDto
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                })
+                .Take(10)
+                .ToListAsync();
+            
+            return result;
         }
 
         public async Task<IReadOnlyList<ProductCategory>> GetCategoriesAsync()

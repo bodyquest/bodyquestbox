@@ -1,0 +1,42 @@
+
+<section class="main-products-container">
+    <section class="product-categories">
+        <h5 class="title">Sort</h5>
+        <select name="" id="">
+            <option selected value="">Alphabetical</option>
+            <option value="">Price: Low to High</option>
+            <option value="">Price: High to Low</option>
+        </select>
+
+        <section class="categories">
+            <h5 class="title">Categories</h5>
+            <ul>
+                <li *ngFor="let category of categories">
+                    {{category.name}}
+                </li>
+            </ul>
+        </section>
+    </section>
+
+    <section class="product-list">
+        <section class="products-head">
+            <header class="count">
+                <span>Showing <strong>10</strong> of <strong>16</strong> Results</span>
+            </header>
+            <section class="search-field">
+                <input type="search">
+                <button class="search-btn">
+                    <i class="fa fa-search"></i>
+                </button>
+                <button class="reset-btn">
+                    <i class="fa fa-times"></i>
+                </button>
+            </section>
+        </section>
+        <section class="products-wrapper">
+                <div class="product-card" *ngFor="let item of products">
+                <app-product-item [product]="item"></app-product-item>
+            </div>
+        </section>
+    </section>
+</section>
