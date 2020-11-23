@@ -50,6 +50,12 @@
     
 }
 
+.active {
+    background-image: linear-gradient(to right, #E72B3F, #ff635d);
+    color: white;
+    font-weight: 700;
+}
+
 select {
     margin-top: 0.8em;
     padding: 0.3em;
@@ -62,6 +68,7 @@ select {
     flex-flow: column wrap;
     justify-content: flex-start;
     flex: 0 0 84% ;
+    padding: 0 4em;
 }
 
 .products-wrapper {
@@ -71,7 +78,7 @@ select {
     align-items: flex-start;
     flex: 0 0 70% ;
 
-    padding: 0 4em;
+    // padding: 0 4em;
 }
 
 .product-card-wrapper {
@@ -83,12 +90,12 @@ select {
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 2em 4em 0 4em;
-    margin-bottom: 0.3em;
+    padding: 2em 0 0 0;
+    margin-bottom: 1em;
     // height: 2.5em;
 }
 
-.products-head > .count {
+.count {
     flex: 0 0 25%;
 }
 
@@ -98,11 +105,11 @@ select {
     align-self: stretch;
     background: rgba(255, 255, 255, 0.8);
     margin: 0;
-    height: 2.2em;
+    height: 2.5em;
     // width: 35em;
     align-items: center;
     padding: 5px;
-    border-radius: 0.4em;
+    border-radius: 0.5em;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -143,7 +150,7 @@ select {
 
 .search-field .fa-search {
     font-size: 1.5em;
-    color:  #777;
+    color:  rgb(120, 120, 120, 0.3);
 }
 
 .search-field .reset-btn {
@@ -165,12 +172,20 @@ select {
 .product-card {
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-between;
-    flex:0 0 31%;
+    justify-content: flex-start;
+    flex:0 0 31.3%;
     height: 420px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 2em;
+}
+
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    height: 420px;
+    padding: 0;
 }
 
 .product-card:not(:nth-child(3)) {
@@ -188,4 +203,8 @@ select {
     // 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     // 0 100px 80px rgba(0, 0, 0, 0.12);
     transition: 0.3s;
+}
+
+.pagination {
+    align-self: center;
 }

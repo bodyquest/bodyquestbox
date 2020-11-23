@@ -11,6 +11,9 @@ namespace Core.Interfaces
         Task<ProductToReturnDto> GetProductByIdAsync(int id);
         Task<IReadOnlyList<ProductToReturnDto>> GetProductsAsync(ProductSpecParams specParams);
         Task<IReadOnlyList<SKU>> GetSKUsAsync();
+
+        Task<int> GetProductCountAsync();
+
         Task<IReadOnlyList<ProductVariantOption>> GetProductVariantOptionsAsync();
 
     }

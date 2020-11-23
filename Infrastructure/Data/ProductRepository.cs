@@ -248,6 +248,11 @@ namespace Infrastructure.Data
             return await this.context.ProductVariantOptions.ToListAsync();
         }
 
+        public async Task<int> GetProductCountAsync()
+        {
+            return await this.context.Products.CountAsync();
+        }
+
         public async Task<IReadOnlyList<SKU>> GetSKUsAsync()
         {
             return await this.context.SKUs.ToListAsync();

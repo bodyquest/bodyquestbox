@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from '../shared/models/category';
 import { IPagination, IProduct } from '../shared/models/pagination';
+import { ShopParams } from '../shared/models/shopParams';
 import { ShopService } from './shop.service';
 
 @Component({
@@ -12,8 +13,8 @@ export class ShopComponent implements OnInit {
   products: IProduct[] = [];
   categories!: ICategory[];
 
-  categoryIdSelected = 0;
-  sortSelected = 'name';
+  shopParams = new ShopParams();
+  totalCount!: number;
   sortOptions = [
     {name: 'Alphabetical', value: 'name'},
     {name: 'Price: Low to High', value: 'priceAsc'},
@@ -28,14 +29,15 @@ export class ShopComponent implements OnInit {
   }
 
   getProducts() {
-    this.shopService.getProducts(this.sortSelected)
+    this.shopService.getProducts(this.shopParams)
       .subscribe((response: IPagination | null) => {
         if (response) {
           this.products = response.data;
+          this.shopParams.pageNumber = response.pageIndex;
+          this.shopParams.pageSize = response.pageSize;
+          this.totalCount = response.count;
         }
-        else{
-         
-        }
+        else{ }
       }, error => {
         console.log(error);
       });
@@ -44,7 +46,7 @@ export class ShopComponent implements OnInit {
   getCategories() {
     this.shopService.getCategories()
       .subscribe(response => {
-        this.categories = response;
+        this.categories = [{id: 0, name: 'All'}, ...response];
       }, error => {
         console.log(error);
       });
@@ -52,7 +54,12 @@ export class ShopComponent implements OnInit {
 
   onSortSelected(event: Event) {
     let element = event.target as HTMLSelectElement;
-    this.sortSelected = element.value;
+    this.shopParams.sort = element.value;
+    this.getProducts();
+  }
+
+  onPageChanged(event: any) {
+    this.shopParams.pageNumber = event;
     this.getProducts();
   }
 }

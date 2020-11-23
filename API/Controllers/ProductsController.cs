@@ -49,14 +49,9 @@ namespace API.Controllers
 
             // var totalItems = await this.productsRepo.CountAsync(countSpec);
 
-            var totalItems = 0;
             var products = await this.simpleRepo.GetProductsAsync(productParams);
-
-            if (products != null)
-            {
-                totalItems = products.Count();
-            }
-
+            var totalItems = await this.simpleRepo.GetProductCountAsync();
+            
             return Ok(new Pagination<ProductToReturnDto>(
                 productParams.PageIndex,
                 productParams.PageSize,

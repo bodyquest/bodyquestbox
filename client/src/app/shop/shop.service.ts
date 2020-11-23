@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { IPagination } from '../shared/models/pagination';
 import { ICategory } from '../shared/models/category';
 import { map } from 'rxjs/operators';
+import { ShopParams } from '../shared/models/shopParams';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,18 @@ export class ShopService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(sort?: string) {
+  getProducts(shopParams: ShopParams) {
     let params = new HttpParams();
 
-    if (sort) {
-      params = params.append('sort', sort);
-    }
+    // *** NOT IMPLEMENTED YET ***
+    // if (shopParams.categoryIdSelected !== 0) {
+    //   params = params.append('categoryId', shopParams.categoryIdSelected.toString());
+    // }
+
+    params = params.append('sort', shopParams.sort);
+    params = params.append('pageIndex', shopParams.pageNumber.toString());
+    params = params.append('pageSize', shopParams.pageSize.toString());
+
 
     return this.http.get<IPagination>
       (this.baseUrl + 'products', {observe: 'response', params})
