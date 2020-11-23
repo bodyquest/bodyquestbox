@@ -148,7 +148,7 @@ select {
     order: -1;
 }
 
-.search-field .fa-search {
+.fa-search, .fa-search:active, .fa-search:focus {
     font-size: 1.5em;
     color:  rgb(120, 120, 120, 0.3);
 }

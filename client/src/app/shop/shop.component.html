@@ -31,11 +31,11 @@
             </app-paging-header>
 
             <section class="search-field">
-                <input type="search">
-                <button class="search-btn">
+                <input (keyup.enter)="onSearch()" type="search" #search>
+                <button class="search-btn" type="submit" (click)="onSearch()">
                     <i class="fa fa-search"></i>
                 </button>
-                <button class="reset-btn">
+                <button class="reset-btn" (click)="onReset()">
                     <i class="fa fa-times"></i>
                 </button>
             </section>
