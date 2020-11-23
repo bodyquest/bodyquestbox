@@ -2,10 +2,13 @@
 <section class="main-products-container">
     <section class="product-categories">
         <h5 class="title">Sort</h5>
-        <select name="" id="">
-            <option selected value="">Alphabetical</option>
-            <option value="">Price: Low to High</option>
-            <option value="">Price: High to Low</option>
+        <select (change)="onSortSelected($event)">
+            <option *ngFor="let sort of sortOptions"
+                [value]="sort.value">
+                {{sort.name}}
+            </option>
+            <!-- <option value="">Price: Low to High</option>
+            <option value="">Price: High to Low</option> -->
         </select>
 
         <section class="categories">
