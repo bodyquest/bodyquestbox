@@ -1,9 +1,9 @@
 <header class="site-header">
     <div class="wrapper">
         <div class="site-branding">
-            <p class="site-title"><a href="/">BODYQUEST</a></p>
+            <p class="site-title"><a routerLink="/">BODYQUEST</a></p>
             <p class="site-description">
-                <a href="/"><span>prepare for </span>intensity
+                <a routerLink="/"><span>prepare for </span>intensity
                 </a>
             </p>
         </div>
@@ -17,25 +17,50 @@
             </section>
             <nav class="site-nav">
                 <ul>
-                    <li><a href="#">SHOP</a></li>
-                    <li><a href="#">ALL PRODUCTS</a></li>
-                    <li><a href="#">NEW PRODUCTS</a></li>
-                    <li><a href="#">BARS & PLATES</a></li>
-                    <li><a href="#">BESTSELLERS</a></li>
+                    <li>
+                        <a routerLink="/shop">SHOP
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/shop"
+                           routerLinkActive="activated"
+                           [routerLinkActiveOptions]="{exact:true}">ALL PRODUCTS
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/shop/new"
+                           routerLinkActive="activated"
+                           [routerLinkActiveOptions]="{exact:true}">NEW PRODUCTS
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/shop/barsandplates"
+                           routerLinkActive="activated"
+                           [routerLinkActiveOptions]="{exact:true}">BARS & PLATES
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/shop/bestsellers"
+                           routerLinkActive="activated"
+                           [routerLinkActiveOptions]="{exact:true}">BESTSELLERS
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </section>
-        
+
         <section class="right-nav-section">
             <div class="login">
-                <a href=""><i class="fa fa-user-o"></i></a>
-                
+                <a [routerLink]="['/login']"
+                   routerLinkActive="router-link-active"><i class="fa fa-user-o"></i></a>
+
             </div>
             <div class="cart">
                 <a href="">
-                    <img src="assets/images/SNATCH_Shopping_Cart_WHITE.png" alt="Shopping Cart">
+                    <img src="assets/images/SNATCH_Shopping_Cart_WHITE.png"
+                         alt="Shopping Cart">
                 </a>
-                
+
             </div>
             <div class="hamburger">
                 <div class="row"></div>
@@ -44,6 +69,6 @@
                 <div class="row"></div>
             </div>
         </section>
-        
+
     </div>
 </header>

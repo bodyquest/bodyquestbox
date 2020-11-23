@@ -7,6 +7,10 @@ header {
     margin: 0 auto;
 }
 
+a {
+    cursor: pointer;
+}
+
 .site-header .wrapper {
     display: flex;
     justify-content: space-between;
@@ -61,7 +65,6 @@ header {
 .site-branding .site-description a {
     font-family: 'Alrns', sans-serif;
     color: rgb(250, 17, 67);
-    text-decoration: none;
 }
 
 @media screen and (min-width: 320px) {
@@ -112,6 +115,18 @@ header {
     margin: 0.3em 0;
 }
 
+.site-nav a {
+    display: block;
+    padding: 0.5em 0.5em;
+    border-radius: 0.3em;
+    color: rgb(189, 189, 189);
+    transition: color .3s ease-in-out;
+    outline: none;
+    &.activated {
+        color: #EE1143;
+    }
+}
+
 .site-nav li:nth-child(1) a{
     background: #E72B3F;
     border: none;
@@ -122,23 +137,18 @@ header {
     padding: 0.3em 2em;
 }
 
-.site-nav a {
-    display: block;
-    padding: 0.5em 0.5em;
-    border-radius: 0.3em;
-    color: rgb(189, 189, 189);
-    text-decoration: none;
-    outline: none;
-}
-
-.site-nav a:focus,
 .site-nav a:hover {
-    color: white;
+    color: rgb(216, 216, 216);
+    transition: color .3s ease-in-out;
+
+    &.activated {
+        transition: color .3s ease-in-out;
+    }
 }
 
-.site-nav a:focus {
-    text-decoration: underline;
-}
+// .site-nav a:focus {
+//     text-decoration: underline;
+// }
 
 .main-nav {
     display: flex;
@@ -187,8 +197,6 @@ header {
     font-size: 1.5em;
     color:  #777;
 }
-
-
 
 .right-nav-section {
     display: flex;
