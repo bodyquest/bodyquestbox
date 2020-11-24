@@ -24,6 +24,15 @@ li,
 figure,figcaption,blockquote,
 dl,dd {
   margin: 0;
+  
+}
+
+.p-text p {
+  margin-bottom: 0.5em;
+}
+
+.p-text p:nth-child(1) {
+  font-weight: 700;
 }
 
 /* Set core body defaults */

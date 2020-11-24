@@ -21,9 +21,22 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   loadProduct() {
+    let str: string;
+    let final: string;
+
     this.shopService.getProduct(Number(this.activatedRoute.snapshot.paramMap.get('id')))
       .subscribe(product => {
+        // const arr = str.split('\n');
+
+        // arr.forEach(item => {
+        //   const div = document.createElement('div');
+        //   div.innerText = item;
+        //   document.body.appendChild(div);
+        // });
+      str = "<p>" + product.shortDescription;
+      final = str.replace(/(?:\n\n|\n)/g, "</p><p>");
       this.product = product;
+      this.product.shortDescription = final;
       }, error => {
         console.log(error);
       });

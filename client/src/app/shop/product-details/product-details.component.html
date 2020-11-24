@@ -3,8 +3,20 @@
         <img src={{product.pictureUrl}} alt="">
     </section>
     <section class="product-main-info">
-        <h1>{{product.name}}</h1>
-        <p>{{product.shortDescription}}</p>
+        <h2>{{product.name}}</h2>
+
+        <p>{{product.price | currency}}</p>
+
+        <div class="qty">
+            <i class="fa fa-minus-circle"></i>
+            <span>2</span>
+            <i class="fa fa-plus-circle"></i>
+            <button class="btn btn-outline-secondary">
+                Add to Cart
+            </button>
+        </div>
+
+        <div [innerHTML]="product.shortDescription" class="p-text"></div>
     </section>
 </section>
 
