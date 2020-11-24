@@ -44,15 +44,20 @@ namespace Infrastructure.Data
                 })
                 .FirstOrDefaultAsync();
             
-            foreach (var option in product.Options)
+            if (product != null)
             {
-                foreach (var value in product.OptionValues)
+                foreach (var option in product.Options)
                 {
-                    if (option.Id == value.OptionId)
+                    foreach (var value in product.OptionValues)
                     {
-                        option.OptionValueNames.Add(value.ValueName);
+                        if (option.Id == value.OptionId)
+                        {
+                            option.OptionValueNames.Add(value.ValueName);
+                        }
                     }
                 }
+
+                return product;
             }
 
             return product;
