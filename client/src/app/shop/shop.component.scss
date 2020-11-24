@@ -110,13 +110,16 @@ select {
     align-items: center;
     padding: 5px;
     border-radius: 0.5em;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid #dfe1e5;
+    box-shadow: none;
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.search-field:hover {
-    box-shadow:
-    0px 2px 5px 4px rgba(0,0,0,0.08);
+.search-field:hover,
+.search-field:active,
+.search-field:focus {
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    border-color: rgba(223,225,229,0);
     // 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     // 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
     // 0 12.5px 10px rgba(0, 0, 0, 0.06),
