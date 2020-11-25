@@ -10,6 +10,7 @@ namespace API
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using StackExchange.Redis;
 
     public class Startup
     {
@@ -33,6 +34,14 @@ namespace API
                 );
             services.AddDbContext<StoreContext>(x => x.UseSqlite(
                 this.configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddSingleton<IConnectionMultiplexer>(c => 
+            {
+                var configuration = ConfigurationOptions.Parse(this.configuration
+                    .GetConnectionString("Redis"), true);
+
+                return ConnectionMultiplexer.Connect(configuration);
+            });
             
             services.AddApplicationServices();
             services.AddSwaggerDocumentation();

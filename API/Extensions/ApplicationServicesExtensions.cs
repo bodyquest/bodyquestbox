@@ -1,17 +1,18 @@
-using System.Linq;
-using API.Controllers.Errors;
-using Core.Interfaces;
-using Infrastructure.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace API.Extensions
 {
+    using System.Linq;
+    using API.Controllers.Errors;
+    using Core.Interfaces;
+    using Infrastructure.Data;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.DependencyInjection;
+
     public static class ApplicationServicesExtensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
 
