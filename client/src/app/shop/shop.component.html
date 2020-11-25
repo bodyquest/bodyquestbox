@@ -1,47 +1,50 @@
 <section class="main-products-container">
     <section class="product-categories">
-        <h5 class="title">Sort</h5>
+        <ng-container *ngIf="categories">
+            <h5 class="title">Sort</h5>
 
-        <select (change)="onSortSelected($event)">
-            <option *ngFor="let sort of sortOptions"
-                    [value]="sort.value">
-                {{sort.name}}
-            </option>
-        </select>
+            <select (change)="onSortSelected($event)">
+                <option *ngFor="let sort of sortOptions"
+                        [value]="sort.value">
+                    {{sort.name}}
+                </option>
+            </select>
 
-        <section class="categories">
-            <h5 class="title">Categories</h5>
-            <ul>
-                <li *ngFor="let category of categories"
-                    [class.active]="category.id ===this.shopParams.categoryIdSelected"
-                    [value]="category.id">
-                    {{category.name}}
-                </li>
-            </ul>
-        </section>
+            <section class="categories">
+                <h5 class="title">Categories</h5>
+                <ul>
+                    <li *ngFor="let category of categories"
+                        [class.active]="category.id ===this.shopParams.categoryIdSelected"
+                        [value]="category.id">
+                        {{category.name}}
+                    </li>
+                </ul>
+            </section>
+        </ng-container>
     </section>
 
-    <section class="product-list">
+    <section class="product-list" >
         <section class="products-head">
-            <app-paging-header class="count"
-                [totalCount]="totalCount"
-                [pageSize]="this.shopParams.pageSize"
-                [pageNumber]="this.shopParams.pageNumber">
-                
-            </app-paging-header>
-
-            <section class="search-field">
-                <input (keyup.enter)="onSearch()" type="search" #search>
-                <button class="search-btn" type="submit" (click)="onSearch()">
-                    <i class="fa fa-search"></i>
-                </button>
-                <button class="reset-btn" (click)="onReset()">
-                    <i class="fa fa-times"></i>
-                </button>
-            </section>
+            <ng-container *ngIf="categories" >
+                <app-paging-header class="count"
+                    [totalCount]="totalCount"
+                    [pageSize]="this.shopParams.pageSize"
+                    [pageNumber]="this.shopParams.pageNumber">
+                </app-paging-header>
+            
+                <section class="search-field">
+                    <input (keyup.enter)="onSearch()" type="search" #search>
+                    <button class="search-btn" type="submit" (click)="onSearch()">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <button class="reset-btn" (click)="onReset()">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </section>
+            </ng-container>
         </section>
 
-        <section class="products-wrapper">
+        <section class="products-wrapper" >
             <div class="product-card"
                  *ngFor="let item of products">
                 <app-product-item [product]="item"
@@ -55,16 +58,5 @@
                 [totalCount]="totalCount"
                 (pageChanged)="onPageChanged($event)">
             </app-pager>
-        <!-- <pagination [boundaryLinks]="true"
-                    [totalItems]="this.totalCount"
-                    (pageChanged)="onPageChanged($event)"
-                    [itemsPerPage]="this.shopParams.pageSize"
-                    previousText="&lsaquo;"
-                    nextText="&rsaquo;"
-                    firstText="&laquo;"
-                    lastText="&raquo;"
-                    class="pagination"
-                    *ngIf="totalCount > 0">
-        </pagination> -->
     </section>
 </section>

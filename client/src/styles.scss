@@ -6,8 +6,7 @@
 }
 
 html {
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
+    font: 16px/1.5 Verdana, sans-serif;
     color: rgba(0, 0, 0, 0.8);
 }
 
@@ -27,12 +26,45 @@ dl,dd {
   
 }
 
+body {
+  height: 100%;
+  position: relative;
+}
+
+body::after {
+    content: "";
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+    background-image: url(../src/assets/images/icons/site-background.png);
+    background-position: top;
+}
+
 .p-text p {
   margin-bottom: 0.5em;
 }
 
 .p-text p:nth-child(1) {
   font-weight: 700;
+}
+
+.xng-breadcrumb-root {
+  padding: 8px 16px;
+  display: inline;
+  border-radius: 0;
+}
+
+label.xng-breadcrumb-trail {
+  margin-bottom: 0;
+  color: #E72B3F;
+}
+
+.xng-breadcrumb-separator {
+  padding: 0 0;
 }
 
 /* Set core body defaults */

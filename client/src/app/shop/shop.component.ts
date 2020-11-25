@@ -10,7 +10,7 @@ import { ShopService } from './shop.service';
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-  @ViewChild('search', {static: true}) searchTerm!: ElementRef;
+  @ViewChild("search", {static: false}) searchTerm: ElementRef | undefined;
   products: IProduct[] = [];
   categories!: ICategory[];
 
@@ -20,7 +20,7 @@ export class ShopComponent implements OnInit {
     {name: 'Alphabetical', value: 'name'},
     {name: 'Price: Low to High', value: 'priceAsc'},
     {name: 'Price: High to Low', value: 'priceDesc'}
-  ]
+  ];
 
   constructor(private shopService: ShopService) { }
 
@@ -74,13 +74,19 @@ export class ShopComponent implements OnInit {
   }
 
   onSearch() {
-    this.shopParams.search = this.searchTerm.nativeElement.value;
+    if (this.searchTerm) {
+      this.shopParams.search = this.searchTerm.nativeElement.value;
+    }
+    
     this.shopParams.pageNumber = 1;
     this.getProducts();
   }
 
   onReset() {
-    this.searchTerm.nativeElement.value = "";
+    if (this.searchTerm) {
+      this.searchTerm.nativeElement.value = "";
+    }
+    
     this.shopParams = new ShopParams();
     this.getProducts();
   }
