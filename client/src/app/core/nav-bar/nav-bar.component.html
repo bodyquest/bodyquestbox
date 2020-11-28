@@ -50,15 +50,32 @@
         </section>
 
         <section class="right-nav-section">
-            <div class="login">
-                <a [routerLink]="['/login']"
-                   routerLinkActive="router-link-active"><i class="fa fa-user-o"></i></a>
-
+            <div class="login"
+                 id="dropdown">
+                <a><i class="fa fa-user-o"></i></a>
+                <div class="nav"
+                     role="tablist"
+                     #navdrop
+                     id="navdrop">
+                    <a class="nav-link "
+                       [routerLink]="['/login']"
+                       routerLinkActive="router-link-active"
+                       role="tab"
+                       data-toggle="tab">Login</a>
+                    <a class="nav-link "
+                       [routerLink]="['/login']"
+                       routerLinkActive="router-link-active"
+                       role="tab"
+                       data-toggle="tab">Register</a>
+                </div>
             </div>
+
             <div class="cart">
-                <a href="">
+                <a routerLink="/basket">
                     <img src="assets/images/SNATCH_Shopping_Cart_WHITE.png"
                          alt="Shopping Cart">
+                    <div *ngIf="(basket$ | async) as basket"
+                         class="cart-qty">{{basket.items.length}}</div>
                 </a>
 
             </div>

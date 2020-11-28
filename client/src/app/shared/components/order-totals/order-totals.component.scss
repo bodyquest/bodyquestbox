@@ -1,0 +1,38 @@
+.title {
+    padding: 0.7em 2em;
+    background-image: linear-gradient(90deg, #E72B3F,#ff8a00);
+}
+
+.title > h5 {
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.info {
+    padding: 1em 2em 2em 2em;
+    background: white;
+}
+
+.info > p {
+    font-style: italic;
+    margin-bottom: 1em;
+}
+
+.info > ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2em;
+}
+
+.info > ul > li {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 1em 0;
+    border-bottom: 1px solid #E72B3F;
+}
+
+.info > ul > li:nth-child(1) {
+    color: #333;
+}

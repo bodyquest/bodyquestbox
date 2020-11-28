@@ -8,10 +8,10 @@
         <p>{{product.price | currency}}</p>
 
         <div class="qty">
-            <i class="fa fa-minus-circle"></i>
-            <span>2</span>
-            <i class="fa fa-plus-circle"></i>
-            <button class="btn btn-outline-secondary">
+            <i (click)="decrementQuantity()" class="fa fa-minus-circle"></i>
+            <span>{{quantity}}</span>
+            <i (click)="incrementQuantity()" class="fa fa-plus-circle"></i>
+            <button (click)="addItemToBasket()" class="btn btn-outline-secondary">
                 Add to Cart
             </button>
         </div>

@@ -1,0 +1,22 @@
+<div class="title">
+    <h5 class="totals-title">Order Summary</h5>
+</div>
+<section class="info">
+    <p>
+        Shipping costs will be added depending on your choices in checkout
+    </p>
+    <ul *ngIf="(basketTotal$ | async)as totals">
+        <li>
+            <strong>Order subtotal</strong>
+            <strong>{{totals.subtotal}}</strong>
+        </li>
+        <li>
+            <strong>Shipping and handling</strong>
+            <strong>{{totals.shipping}}</strong>
+        </li>
+        <li>
+            <strong>Total</strong>
+            <strong>{{totals.total}}</strong>
+        </li>
+    </ul>
+</section>

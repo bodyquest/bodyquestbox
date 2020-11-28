@@ -7,13 +7,11 @@ export interface IProduct {
     pictureUrl: string;
     options: Option[];
     optionValues: OptionValue[];
-  }
-  
+}
 interface OptionValue {
     optionId: number;
     valueName: string;
 }
-  
 interface Option {
     id: number;
     name: string;

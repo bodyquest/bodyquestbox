@@ -2,10 +2,10 @@
 <div class="up">
     <div class="image-container"
          style="background-image: url({{product.pictureUrl}});">
-         <div class="image-overlay">
-             <i class="fa fa-search"></i>
-         </div>
-         <a routerLink="/shop/{{product.id}}"></a>
+        <div class="image-overlay">
+            <i class="fa fa-search"></i>
+        </div>
+        <a routerLink="/shop/{{product.id}}"></a>
     </div>
     <a routerLink="/shop/{{product.id}}">
         <h5>{{product.name}}</h5>
@@ -15,7 +15,8 @@
 
 <div class="down">
     <section class="buttons">
-        <button class="btn button-primary">Buy</button>
+        <button (click)="addItemToBasket()"
+                class="btn button-primary">Buy</button>
         <button routerLink="/shop/{{product.id}}"
                 class="btn button-primary">View</button>
     </section>
