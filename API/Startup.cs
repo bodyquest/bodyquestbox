@@ -5,6 +5,7 @@ namespace API
     using API.Middleware;
     using AutoMapper;
     using Infrastructure.Data;
+    using Infrastructure.Identity;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,11 @@ namespace API
                 );
             services.AddDbContext<StoreContext>(x => x.UseSqlite(
                 this.configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppIdentityDbContext>(x => 
+            {
+                x.UseSqlite(this.configuration.
+                    GetConnectionString("IdentityConnection"));
+            });
 
             services.AddSingleton<IConnectionMultiplexer>(c => 
             {
@@ -44,6 +50,7 @@ namespace API
             });
             
             services.AddApplicationServices();
+            services.AddIdentityServices(this.configuration);
             services.AddSwaggerDocumentation();
             services.AddCors(opt =>
             {
@@ -72,6 +79,7 @@ namespace API
 
             app.UseCors("CorsPolicy");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseSwaggerDocumentation();

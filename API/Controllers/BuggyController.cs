@@ -1,15 +1,20 @@
-
-
 namespace API.Controllers
 {
     using API.Controllers.Errors;
     using Infrastructure.Data;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class BuggyController : BaseApiController
     {
         private readonly StoreContext context;
 
+        [HttpGet("testauth")]
+        [Authorize]
+        public ActionResult<string> GetSecretText()
+        {
+            return "secret stuff accessed";
+        }
         public BuggyController(StoreContext context)
         {
             this.context = context;

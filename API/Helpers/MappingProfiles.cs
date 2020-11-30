@@ -2,6 +2,7 @@ namespace API.Helpers
 {
     using AutoMapper;
     using Core.Entities;
+    using Core.Entities.Identity;
     using Core.Models;
 
     public class MappingProfiles : Profile
@@ -16,6 +17,8 @@ namespace API.Helpers
                 .ForMember(d => d.PictureUrl,
                            o => o.MapFrom<UrlResolver>());
                 //resolving local static file to full URL
+
+            CreateMap<Address, AddressDto>().ReverseMap();
         }
     }
 } 
