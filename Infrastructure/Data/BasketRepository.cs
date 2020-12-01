@@ -20,7 +20,8 @@ namespace Infrastructure.Data
         {
             var data = await this.database.StringGetAsync(basketId);
 
-            return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
+            var result = data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
+            return result;
         }
 
         public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)

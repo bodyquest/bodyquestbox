@@ -9,7 +9,7 @@ namespace Core.Entities
 
         public CustomerBasket(string id)
         {
-            this.Id = Guid.NewGuid().ToString();
+            this.Id = id;
         }
 
         public string Id { get; set; }

@@ -19,6 +19,9 @@ namespace API.Helpers
                 //resolving local static file to full URL
 
             CreateMap<Address, AddressDto>().ReverseMap();
+
+            CreateMap<CustomerBasketDto, CustomerBasket>();
+            CreateMap<BasketItemDto, BasketItem>();
         }
     }
 } 
