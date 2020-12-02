@@ -7,6 +7,22 @@ namespace Infrastructure.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "DeliveryMethods",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ShortName = table.Column<string>(nullable: true),
+                    DeliveryTime = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Price = table.Column<double>(type: "decimal(8,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeliveryMethods", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Options",
                 columns: table => new
                 {
@@ -49,8 +65,8 @@ namespace Infrastructure.Data.Migrations
                     Name = table.Column<string>(maxLength: 90, nullable: false),
                     ShortDescription = table.Column<string>(maxLength: 700, nullable: false),
                     LongDescription = table.Column<string>(nullable: false),
-                    GrossWeight = table.Column<decimal>(nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
+                    GrossWeight = table.Column<double>(nullable: false),
+                    Price = table.Column<double>(type: "decimal(8,2)", nullable: false),
                     PictureUrl = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -59,23 +75,32 @@ namespace Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OptionValues",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ValueName = table.Column<string>(nullable: true),
-                    OptionId = table.Column<int>(nullable: false)
+                    BuyerEmail = table.Column<string>(nullable: true),
+                    OrderDate = table.Column<long>(nullable: false),
+                    ShipToAddress_FirstName = table.Column<string>(nullable: true),
+                    ShipToAddress_LastName = table.Column<string>(nullable: true),
+                    ShipToAddress_Street = table.Column<string>(nullable: true),
+                    ShipToAddress_City = table.Column<string>(nullable: true),
+                    ShipToAddress_PostCode = table.Column<string>(nullable: true),
+                    DeliveryMethodId = table.Column<int>(nullable: true),
+                    Subtotal = table.Column<double>(nullable: false),
+                    Status = table.Column<string>(nullable: false),
+                    PaymentIntentId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OptionValues", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OptionValues_Options_OptionId",
-                        column: x => x.OptionId,
-                        principalTable: "Options",
+                        name: "FK_Orders_DeliveryMethods_DeliveryMethodId",
+                        column: x => x.DeliveryMethodId,
+                        principalTable: "DeliveryMethods",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -135,7 +160,7 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     SkuName = table.Column<string>(maxLength: 60, nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
+                    Price = table.Column<double>(type: "decimal(8,2)", nullable: false),
                     StockQty = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false)
                 },
@@ -148,6 +173,57 @@ namespace Infrastructure.Data.Migrations
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Price = table.Column<double>(type: "decimal(18, 2)", nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
+                    ItemOrdered_ProductItemId = table.Column<int>(nullable: true),
+                    ItemOrdered_ProductName = table.Column<string>(nullable: true),
+                    ItemOrdered_PictureUrl = table.Column<string>(nullable: true),
+                    OrderId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OptionValues",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ValueName = table.Column<string>(nullable: true),
+                    OptionId = table.Column<int>(nullable: false),
+                    SKUId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OptionValues", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OptionValues_Options_OptionId",
+                        column: x => x.OptionId,
+                        principalTable: "Options",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OptionValues_SKUs_SKUId",
+                        column: x => x.SKUId,
+                        principalTable: "SKUs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,6 +256,21 @@ namespace Infrastructure.Data.Migrations
                 name: "IX_OptionValues_OptionId",
                 table: "OptionValues",
                 column: "OptionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OptionValues_SKUId",
+                table: "OptionValues",
+                column: "SKUId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderId",
+                table: "OrderItems",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_DeliveryMethodId",
+                table: "Orders",
+                column: "DeliveryMethodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductCategories_ParentId",
@@ -220,6 +311,9 @@ namespace Infrastructure.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "OrderItems");
+
+            migrationBuilder.DropTable(
                 name: "Products_ProductCategories");
 
             migrationBuilder.DropTable(
@@ -229,7 +323,7 @@ namespace Infrastructure.Data.Migrations
                 name: "ProductVariants");
 
             migrationBuilder.DropTable(
-                name: "SKUs");
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "ProductCategories");
@@ -238,10 +332,16 @@ namespace Infrastructure.Data.Migrations
                 name: "OptionValues");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "DeliveryMethods");
 
             migrationBuilder.DropTable(
                 name: "Options");
+
+            migrationBuilder.DropTable(
+                name: "SKUs");
+
+            migrationBuilder.DropTable(
+                name: "Products");
         }
     }
 }

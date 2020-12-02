@@ -14,15 +14,15 @@ export class BasketService {
 
   private basketSource = new BehaviorSubject<IBasket>(null!);
   private basketTotalSource = new BehaviorSubject<IBasketTotals>(null!);
-  basket$ = this.basketSource.asObservable();
-  basketTotal$ = this.basketTotalSource.asObservable();
+  basket$ = this.basketSource?.asObservable();
+  basketTotal$ = this.basketTotalSource?.asObservable();
 
   constructor(private http: HttpClient) { }
 
   getBasket(id: string) {
     return this.http.get(this.baseUrl + 'basket?id=' + id)
       .pipe(
-        map((basket: any) => {
+        map((basket?: any) => {
           this.basketSource.next(basket);
           this.calculateTotals();
         })
@@ -40,7 +40,7 @@ export class BasketService {
   }
 
   getCurrentBasketValue(): IBasket {
-    return this.basketSource.value;
+    return this.basketSource?.value;
   }
 
   addItemToBasket(item: IProduct, quantity = 1): void {

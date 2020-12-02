@@ -98,7 +98,7 @@
                     <img src="assets/images/SNATCH_Shopping_Cart_WHITE.png"
                          alt="Shopping Cart">
                     <div *ngIf="(basket$ | async) as basket"
-                         class="cart-qty">{{basket.items.length}}</div>
+                         class="cart-qty">{{basket?.items.length}}</div>
                 </a>
 
             </div>

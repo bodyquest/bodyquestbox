@@ -1,10 +1,9 @@
-using AutoMapper;
-using Core.Entities;
-using Core.Models;
-using Microsoft.Extensions.Configuration;
-
 namespace API.Helpers
 {
+    using AutoMapper;
+    using Core.Entities;
+    using Core.Models;
+    using Microsoft.Extensions.Configuration;
     public class UrlResolver : IValueResolver<Product, ProductToReturnDto, string>
     {
         private readonly IConfiguration config;

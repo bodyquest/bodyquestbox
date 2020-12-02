@@ -1,13 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.Entities;
-using Core.Interfaces;
-using Core.Specifications;
-using Microsoft.EntityFrameworkCore;
-
 namespace Infrastructure.Data
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Core.Entities;
+    using Core.Interfaces;
+    using Core.Specifications;
+    using Microsoft.EntityFrameworkCore;
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly StoreContext context;
@@ -47,6 +46,22 @@ namespace Infrastructure.Data
         {
             return SpecificationEvaluator<T>.GetQuery(
                 this.context.Set<T>().AsQueryable(), spec);
+        }
+
+        public void Add(T entity)
+        {
+            this.context.Set<T>().Add(entity);
+        }
+
+        public void Update(T entity)
+        {
+            this.context.Set<T>().Attach(entity);
+            this.context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Delete(T entity)
+        {
+            this.context.Set<T>().Remove(entity);
         }
     }
 }

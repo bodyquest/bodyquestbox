@@ -1,0 +1,16 @@
+[
+  {
+    "Id": 1,
+    "ShortName": "Econt",
+    "Description": "Fast delivery time",
+    "DeliveryTime": "1-2 Days",
+    "Price": 4.99
+  },
+  {
+    "Id": 2,
+    "ShortName": "Speedy",
+    "Description": "Fast delivery time",
+    "DeliveryTime": "1-2 Days",
+    "Price": 4.69
+  }
+]
