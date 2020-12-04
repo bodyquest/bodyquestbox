@@ -1,0 +1,40 @@
+.checkout-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+.checkout-button {
+    margin: 0;
+    background: linear-gradient(90deg,#E72B3F,#ff8a00);
+    background-image: #ffffff;
+    padding: 0.5em 5em;
+    color: white;
+    font-weight: 700;
+    float: right;
+    border: none;
+    cursor: pointer;
+
+    position: relative;
+}
+.overlay:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    opacity: 0.4;
+    
+}
+
+.checkout-button-next {
+    margin: 0;
+    background-image: linear-gradient(90deg, #E72B3F,#ff8a00);
+    padding: 0.5em 5em;
+    color: white;
+    font-weight: 700;
+    float: right;
+    border: none;
+    cursor: pointer;
+}

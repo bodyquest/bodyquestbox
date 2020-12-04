@@ -1,0 +1,31 @@
+button.nav-link {
+    background: linear-gradient(0,  #E72B3F70,#ff8a0070);
+    border-radius: 0;
+    border: none;
+    color: #ffffff70;
+
+    
+    &:focus {
+        outline: none;
+    }
+    &.active {
+        color: white;
+        background: linear-gradient(0,  #E72B3F,#ff8a00);
+    }
+    &.active:hover {
+        color: white;
+        background: linear-gradient(0,  #E72B3F,#ff8a00);
+    }
+    &:active {
+        outline: none;
+        background: linear-gradient(0,  #E72B3F,#ff8a00);
+    }
+    &.active:focus {
+        outline: none;
+        background: linear-gradient(0,  #E72B3F,#ff8a00);
+    }
+    &.active:visited {
+        outline: none;
+        background: linear-gradient(0,  #E72B3F,#ff8a00);
+    }
+}

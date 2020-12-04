@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
       this.accountService.loadCurrentUser(null);
     }
 
-    this.accountService.loadCurrentUser(token);
+    this.accountService.isLogged;
   }
 
   loadBasket() {

@@ -1,5 +1,36 @@
 .checkout-container {
     display: flex;
+    justify-content: center;
     width: 100vw;
     padding: 0 3em;
+}
+
+.checkout-data {
+    width: 60%;
+    margin: 4em 0 3em 0;
+}
+
+.totals {
+    width: 30%;
+    //align-self: right;
+
+    margin: 4em 0 3em 3em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.totals > a {
+    display: block;
+    padding: 0.5em 5em;
+    background: #E72B3F;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    
+}
+
+.totals > a:hover {
+    background: #FF8901;
+    transition: background 0.35s ease-in-out;
 }

@@ -59,9 +59,9 @@ namespace API.Controllers
         [HttpGet("address")]
         public async Task<ActionResult<AddressDto>> GetUserAddress()
         {
-             var user = await this.userManager.FindUserByClaimsPrincipalWithAddressAsync(HttpContext.User);
-
-            return this.mapper.Map<Address, AddressDto>(user.Address);
+            var user = await this.userManager.FindUserByClaimsPrincipalWithAddressAsync(HttpContext.User);
+            var result = this.mapper.Map<Address, AddressDto>(user.Address);
+            return result;
         }
 
         [Authorize]

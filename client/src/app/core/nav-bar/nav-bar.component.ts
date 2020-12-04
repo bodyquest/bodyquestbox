@@ -11,7 +11,7 @@ import { IUser } from 'src/app/shared/models/user';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  basket$!: Observable<IBasket>;
+  basket$!: any;
   currentUser$!: Observable<IUser>;
 
   constructor(
@@ -20,8 +20,12 @@ export class NavBarComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.basket$ = this.basketService.basket$;
+    // if (this.basketService.basket$ !== null) {
+      this.basket$ = this.basketService.basket$;
+    // }
+
     this.currentUser$ = this.accountService.currentUser$;
+    // this.currentUser$ = this.accountService.authCompleted$;
   }
 
   logout() {
