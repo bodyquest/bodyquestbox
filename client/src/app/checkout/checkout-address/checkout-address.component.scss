@@ -3,11 +3,37 @@
     justify-content: space-between;
     margin-bottom: 2em;
 }
+
+.change-address {
+    margin: 0;
+    background: white;
+
+    padding: 0.5em 1.5em;
+    margin-bottom: 0.8em;
+    color:#178500;
+    font-weight: 700;
+    float: right;
+    border: 1px solid #178500;
+    cursor: pointer;
+
+    &:disabled:hover {
+        background: white;
+        color:#178500;
+        border: 1px solid #178500;
+        cursor: default;
+    }
+}
+.change-address:hover {
+    color: white;
+    background: #41C725;
+    border: 1px solid #41C725;
+}
+
 .checkout-button {
     margin: 0;
     background: linear-gradient(90deg,#E72B3F,#ff8a00);
     background-image: #ffffff;
-    padding: 0.5em 5em;
+    padding: 0.5em 3em;
     color: white;
     font-weight: 700;
     float: right;
@@ -31,7 +57,7 @@
 .checkout-button-next {
     margin: 0;
     background-image: linear-gradient(90deg, #E72B3F,#ff8a00);
-    padding: 0.5em 5em;
+    padding: 0.5em 3em;
     color: white;
     font-weight: 700;
     float: right;

@@ -1,11 +1,53 @@
-<p>checkout-payment works!</p>
+<section class="payment-options">
+    <button class="pay-on-delivery">Pay on delivery</button>
+    <button (click)="showContainer(); showForm()"
+            class="pay-with-card">Pay with card</button>
+</section>
+<section #payment
+         class="container payment"
+         [formGroup]="checkoutForm">
+    <div class="form-group owner-name"
+         formGroupName="paymentForm">
+        <app-text-input [label]="'Name on card'"
+                        formControlName="nameOnCard">
+        </app-text-input>
+    </div>
+    <section class="form-input-container">
+        <div class="form-group number">
+            <div #cardNumber
+                 class="form-input"></div>
+        </div>
+        <div class="form-group expiry">
+            <div #cardExpiry
+                 class="form-input"></div>
+        </div>
+        <div class="form-group cvc">
+            <div #cardCvc
+                 class="form-input"></div>
+        </div>
+    </section>
+    <ng-container *ngIf="cardErrors">
+        <span>{{cardErrors}}</span>
+    </ng-container>
+
+</section>
 
 <section class="checkout-button-container">
-    <button class="checkout-button" cdkStepperPrevious>
+    <button class="checkout-button"
+            cdkStepperPrevious>
         Back to Review
         <span class="overlay"></span>
     </button>
-    <button (click)="submitOrder()" class="checkout-button-next">
-        Submit Order
+    <button [disabled]="loading 
+            || checkoutForm.get('paymentForm')?.invalid
+            || !cardNumberValid
+            || !cardExpiryValid
+            || !cardCvcValid"
+            (click)="submitOrder()"
+            class="checkout-button-next">Submit Order
+        <i *ngIf="!loading"
+           class="fa fa-angle-right"></i>
+        <i *ngIf="loading"
+           class="fa fa-spinner fa-spin"></i>
     </button>
 </section>

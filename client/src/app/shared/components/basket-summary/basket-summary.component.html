@@ -1,4 +1,4 @@
-<ng-container *ngIf="basket$ | async">
+<ng-container *ngIf="items.length > 0">
     <table class="products" >
         <thead>
             <tr>
@@ -10,14 +10,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of (basket$ | async)?.items">
+            <tr *ngFor="let item of items">
                 <td>
                     <div>
                         <img src={{item.pictureUrl}} alt="{{item.productName}}">
                     </div>
                     <div>
                         <h6>
-                            <a routerLink="/shop/{{item.id}}">{{item.productName}}</a>
+                            <a routerLink="/shop/{{item.id || item.productId}}">
+                                {{item.productName}}
+                            </a>
                         </h6>
                     </div>
                 </td>

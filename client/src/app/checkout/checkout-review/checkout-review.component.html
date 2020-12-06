@@ -1,5 +1,9 @@
 <section class="mt-4">
-    <app-basket-summary [isBasket]=false></app-basket-summary>
+    <app-basket-summary
+        [isBasket]=false
+        [items]="(basket$ | async)?.items">
+
+    </app-basket-summary>
 </section>
 
 <section class="checkout-button-container">
@@ -7,7 +11,7 @@
         Back to Delivery
         <span class="overlay"></span>
     </button>
-    <button class="checkout-button-next" cdkStepperNext>
+    <button class="checkout-button-next" (click)="createPaymentIntent()">
         Go to Payment
     </button>
 </section>

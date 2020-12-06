@@ -1,3 +1,43 @@
+.payment {
+    padding: 0 0.2em;
+}
+
+.payment-options {
+    margin-top: 0.8em;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.pay-on-delivery {
+    margin: 0;
+    margin-right: 2em;
+    background: linear-gradient(90deg,#E72B3F,#ff8a00);
+    background-image: #ffffff;
+    padding: 0.5em 1.5em;
+    color: white;
+    font-weight: 700;
+    float: right;
+    border: none;
+    cursor: pointer;
+
+    position: relative;
+}
+
+.pay-with-card{
+    margin: 0;
+    margin-right: 2em;
+    background: blue;
+    background-image: #ffffff;
+    padding: 0.5em 1.5em;
+    color: white;
+    font-weight: 700;
+    float: right;
+    border: none;
+    cursor: pointer;
+
+    position: relative;
+}
+
 .checkout-button-container {
     display: flex;
     justify-content: space-between;
@@ -37,4 +77,63 @@
     float: right;
     border: none;
     cursor: pointer;
+
+    &:disabled {
+        background: #d6d9dc;
+        color: white;
+        cursor: default;
+    }
+}
+
+.fa-angle-right {
+    margin-left: 0.3em;
+}
+
+.fa-spinner {
+    margin-left: 0.3em;
+}
+
+.owner-name {
+    margin: 1em 0 0 0;
+}
+
+.form-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0 0.5em 0;
+}
+
+.number {
+    flex: 0 0 46%;
+    margin: 0;
+}
+
+.expiry,
+.cvc{
+    flex: 0 0 23%;
+    margin: 0;
+}
+
+.owner-name {
+    // padding: 1em 0.6em;
+    // border: 1px solid #ccc;
+    // background: white;
+    // border-radius: 0.3em;
+}
+
+.form-input {
+    padding: 1em 0.6em;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 0.3em;
+}
+
+.payment span {
+    margin-left: 0.7em;
+    color:  #E72B3F;
+}
+
+.checkout-button-container {
+    margin-top: 1em;
 }

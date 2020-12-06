@@ -256,7 +256,7 @@ a {
 }
 
 .display-name {
-    background: -webkit-linear-gradient(left, #E72B3F,#ff8a00);
+    background: -webkit-linear-gradient(left, #E72B3F 50%,#ff8a00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 600;

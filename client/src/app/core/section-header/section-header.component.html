@@ -1,14 +1,14 @@
 <ng-container *ngIf="(breadcrumb$ | async) as breadcrumbs">
-    <section *ngIf="breadcrumbs.length > 0 && breadcrumbs[breadcrumbs.length-1].label !== 'Home'">
-        <div class="container mx-4 py-1 col-11"
+    <section class="breadcrumbs-container-wrapper" *ngIf="breadcrumbs.length > 0 && breadcrumbs[breadcrumbs.length-1].label !== 'Home'">
+        <div class="breadcrumbs-container"
              style="background-color: #f5f5f5;">
     
-            <div class="row d-flex align-items-center">
-                <div class="col-3">
-                    <h2>{{breadcrumbs.length > 0 && breadcrumbs[breadcrumbs.length-1].label | titlecase}}</h2>
+            <div class="breadcrumbs">
+                <div class="breadcrumb-title">
+                    <h3>{{breadcrumbs.length > 0 && breadcrumbs[breadcrumbs.length-1].label | titlecase}}</h3>
                 </div>
     
-                <div class="col-5">
+                <div class="breadcrumb-nav">
                     <xng-breadcrumb></xng-breadcrumb>
                 </div>
             </div>

@@ -5,15 +5,15 @@ namespace Core.Entities.OrderAggregate
     public enum OrderStatus
     {
         [EnumMember(Value = "Pending")]
-        Pending = 0,
+        Pending,
 
         [EnumMember(Value = "Payment Received")]
-        PaymentReceived = 1,
+        PaymentReceived,
 
         [EnumMember(Value = "Payment Failed")]
-        PaymentFailed = 2,
+        PaymentFailed,
 
         [EnumMember(Value = "Shipped")]
-        Shipped = 3
+        Shipped
     }
 }

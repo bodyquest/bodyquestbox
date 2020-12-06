@@ -5,18 +5,18 @@
     <p>
         Shipping costs will be added depending on your choices in checkout
     </p>
-    <ul *ngIf="(basketTotal$ | async)as totals">
+    <ul>
         <li>
             <strong>Order subtotal</strong>
-            <strong>{{totals.subtotal}}</strong>
+            <strong>{{subtotal}}</strong>
         </li>
         <li>
             <strong>Shipping and handling</strong>
-            <strong>{{totals.shipping}}</strong>
+            <strong>{{shippingPrice }}</strong>
         </li>
         <li>
             <strong>Total</strong>
-            <strong>{{totals.total | number : '1.2-2'}}</strong>
+            <strong>{{total | number : '1.2-2'}}</strong>
         </li>
     </ul>
 </section>

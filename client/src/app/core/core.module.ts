@@ -28,7 +28,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
-      preventDuplicates: true
+      preventDuplicates: true,
+      timeOut: 10000
     })
   ],
   exports: [

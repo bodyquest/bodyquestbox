@@ -1,5 +1,6 @@
 button.nav-link {
-    background: linear-gradient(0,  #E72B3F70,#ff8a0070);
+    //background: linear-gradient(0,  #E72B3F70,#ff8a0070);
+    background: #d6d9dc;
     border-radius: 0;
     border: none;
     color: #ffffff70;
@@ -19,6 +20,9 @@ button.nav-link {
     &:active {
         outline: none;
         background: linear-gradient(0,  #E72B3F,#ff8a00);
+    }
+    &:disabled:not(.active) {
+        color: white;
     }
     &.active:focus {
         outline: none;

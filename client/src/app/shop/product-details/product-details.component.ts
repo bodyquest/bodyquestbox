@@ -19,7 +19,7 @@ export class ProductDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private bcService: BreadcrumbService,
     private basketService: BasketService) {
-      this.bcService.set("@productDetails", "");
+      this.bcService.set('@productDetails', '');
     }
 
   ngOnInit(): void {
