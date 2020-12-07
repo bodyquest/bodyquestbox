@@ -40,6 +40,7 @@ namespace API.Controllers
             this.mapper = mapper;
         }
 
+        //[Cached(600)]
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProductsAsync(
             [FromQuery] ProductSpecParams productParams)
@@ -58,6 +59,7 @@ namespace API.Controllers
                 totalItems, products));
         }
 
+        //[Cached(600)]
         [HttpGet("{id}")] 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]

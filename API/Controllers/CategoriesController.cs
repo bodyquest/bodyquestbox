@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using API.Helpers;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Models;
@@ -15,6 +16,7 @@ namespace API.Controllers
             this.repo = repo;
         }
 
+        //[Cached(600)]
         [HttpGet("maincategories")]
         public async Task<ActionResult<IReadOnlyList<MainCategoryDto>>> GetMainCategoriesAsync()
         {
