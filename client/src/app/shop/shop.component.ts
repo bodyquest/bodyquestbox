@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ICategory } from '../shared/models/category';
 import { IPagination, IProduct } from '../shared/models/pagination';
 import { ShopParams } from '../shared/models/shopParams';
@@ -9,12 +9,12 @@ import { ShopService } from './shop.service';
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss']
 })
-export class ShopComponent implements OnInit {
-  @ViewChild('search', {static: false}) searchTerm: ElementRef | undefined;
+export class ShopComponent implements OnInit, AfterViewInit {
+  @ViewChild('search', {static: false}) searchTerm!: ElementRef;
   products: IProduct[] = [];
   categories!: ICategory[];
 
-  shopParams = new ShopParams();
+  shopParams!: ShopParams;
   totalCount!: number;
   sortOptions = [
     {name: 'Alphabetical', value: 'name'},
@@ -22,20 +22,26 @@ export class ShopComponent implements OnInit {
     {name: 'Price: High to Low', value: 'priceDesc'}
   ];
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService) {
+    this.shopParams = this.shopService.getShopParams();
+  }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getProducts(true);
     this.getCategories();
   }
 
-  getProducts() {
-    this.shopService.getProducts(this.shopParams)
+  ngAfterViewInit(): void {
+    if (this.shopParams.search !== undefined) {
+      this.searchTerm.nativeElement.value = this.shopParams.search;
+    }
+}
+
+  getProducts(useCache = false): void {
+    this.shopService.getProducts(useCache)
       .subscribe((response: IPagination | null) => {
         if (response) {
           this.products = response.data;
-          this.shopParams.pageNumber = response.pageIndex;
-          this.shopParams.pageSize = response.pageSize;
           this.totalCount = response.count;
         }
         else{ }
@@ -44,7 +50,7 @@ export class ShopComponent implements OnInit {
       });
   }
 
-  getCategories() {
+  getCategories(): void {
     this.shopService.getCategories()
       .subscribe(response => {
         this.categories = [{id: 0, name: 'All'}, ...response];
@@ -60,34 +66,44 @@ export class ShopComponent implements OnInit {
   //   this.getCategoryProduct();
   // }
 
-  onSortSelected(event: Event) {
+  onSortSelected(event: Event): void {
+    const params = this.shopService.getShopParams();
     let element = event.target as HTMLSelectElement;
-    this.shopParams.sort = element.value;
+    params.sort = element.value;;
+    this.shopService.setShopParams(params);
     this.getProducts();
+    // let element = event.target as HTMLSelectElement;
+    // this.shopParams.sort = element.value;
+    // this.getProducts();
   }
 
-  onPageChanged(event: any) {
-    if (this.shopParams.pageNumber !== event) {
-      this.shopParams.pageNumber = event;
-    this.getProducts();
+  onPageChanged(event: any): void {
+    const params = this.shopService.getShopParams();
+    if (params.pageNumber !== event) {
+      params.pageNumber = event;
+      this.shopService.setShopParams(params);
+      this.getProducts(true);
     }
   }
 
-  onSearch() {
+  onSearch(): void {
+    const params = this.shopService.getShopParams();
     if (this.searchTerm) {
-      this.shopParams.search = this.searchTerm.nativeElement.value;
+      params.search = this.searchTerm.nativeElement.value;
     }
-    
-    this.shopParams.pageNumber = 1;
+
+    params.pageNumber = 1;
+    this.shopService.setShopParams(params);
     this.getProducts();
   }
 
-  onReset() {
+  onReset(): void {
     if (this.searchTerm) {
-      this.searchTerm.nativeElement.value = "";
+      this.searchTerm.nativeElement.value = '';
     }
-    
+
     this.shopParams = new ShopParams();
+    this.shopService.setShopParams(this.shopParams);
     this.getProducts();
   }
 }

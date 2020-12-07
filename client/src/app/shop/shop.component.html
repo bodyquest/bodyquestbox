@@ -5,6 +5,7 @@
 
             <select (change)="onSortSelected($event)">
                 <option *ngFor="let sort of sortOptions"
+                        [selected]="shopParams.sort === sort.value"
                         [value]="sort.value">
                     {{sort.name}}
                 </option>
@@ -23,28 +24,34 @@
         </ng-container>
     </section>
 
-    <section class="product-list" >
+    <section class="product-list">
         <section class="products-head">
-            <ng-container *ngIf="categories" >
+            <ng-container [hidden]]="!categories">
                 <app-paging-header class="count"
-                    [totalCount]="totalCount"
-                    [pageSize]="this.shopParams.pageSize"
-                    [pageNumber]="this.shopParams.pageNumber">
+                                   [totalCount]="totalCount"
+                                   [pageSize]="this.shopParams.pageSize"
+                                   [pageNumber]="this.shopParams.pageNumber">
                 </app-paging-header>
-            
+
                 <section class="search-field">
-                    <input (keyup.enter)="onSearch()" type="search" #search>
-                    <button class="search-btn" type="submit" (click)="onSearch()">
+                    <input (keyup.enter)="onSearch()"
+                           type="search"
+                           #search
+                           #default>
+                    <button class="search-btn"
+                            type="submit"
+                            (click)="onSearch()">
                         <i class="fa fa-search"></i>
                     </button>
-                    <button class="reset-btn" (click)="onReset()">
+                    <button class="reset-btn"
+                            (click)="onReset()">
                         <i class="fa fa-times"></i>
                     </button>
                 </section>
             </ng-container>
         </section>
 
-        <section class="products-wrapper" >
+        <section class="products-wrapper">
             <div class="product-card"
                  *ngFor="let item of products">
                 <app-product-item [product]="item"
@@ -52,11 +59,11 @@
                 </app-product-item>
             </div>
         </section>
-            <app-pager
-                class="pagination"
-                [pageSize]="shopParams.pageSize"
-                [totalCount]="totalCount"
-                (pageChanged)="onPageChanged($event)">
-            </app-pager>
+        <app-pager class="pagination"
+                   [pageSize]="shopParams.pageSize"
+                   [totalCount]="totalCount"
+                   [pageNumber]="shopParams.pageNumber"
+                   (pageChanged)="onPageChanged($event)">
+        </app-pager>
     </section>
 </section>

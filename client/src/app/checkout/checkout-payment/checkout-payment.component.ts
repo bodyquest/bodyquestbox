@@ -52,9 +52,13 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.cardNumber.destroy();
-    this.cardExpiry.destroy();
-    this.cardCvc.destroy();
+    if (this.cardNumber !== undefined
+      && this.cardExpiry !== undefined
+      && this.cardCvc !== undefined) {
+        this.cardNumber.destroy();
+        this.cardExpiry.destroy();
+        this.cardCvc.destroy();
+    }
   }
 
   onChange(event: any): void {
