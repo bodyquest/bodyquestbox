@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/shop';
+    console.log(this.returnUrl);
     this.createLoginForm();
   }
 
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.accountService.login(this.loginForm?.value)
       .subscribe(() => {
-        this.router.navigateByUrl(this.returnUrl);
+        this.router.navigateByUrl('/shop');
       }, error => {
         console.log(error);
       });

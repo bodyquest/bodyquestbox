@@ -17,9 +17,12 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot) {
 
       if (!this.accountService.isLogged) {
-
-        return this.accountService.authCompleted$.pipe(map(user => !!user), catchError(err => [false]));
+        this.accountService.authCompleted$.pipe(map(user => !!user), catchError(err => [false]));
+        //console.log(state.url);
+        this.router.navigate(['account/login'], {queryParams: {returnUrl: state.url}});
+        // return this.accountService.authCompleted$.pipe(map(user => !!user), catchError(err => [false]));
       }
+
       return true;
     // return this.accountService.currentUser$.pipe(
     //   map((auth: any) => {
