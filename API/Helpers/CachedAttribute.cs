@@ -10,6 +10,7 @@ namespace API.Helpers
     using Microsoft.AspNetCore.Mvc.Filters;
     using Microsoft.Extensions.DependencyInjection;
 
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class CachedAttribute : Attribute, IAsyncActionFilter
     {
         private readonly int timeToLiveSeconds;
