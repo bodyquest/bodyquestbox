@@ -50,7 +50,7 @@
         </section>
 
         <section class="right-nav-section">
-            <ng-container *ngIf="(currentUser$ | async) === null">
+            <ng-container *ngIf="!isLogged">
                 <div class="login"
                     id="dropdown">
                     <a><i class="fa fa-user-o"></i></a>
@@ -69,10 +69,12 @@
                     </div>
                 </div>
             </ng-container>
-            <ng-container *ngIf="(currentUser$ | async) as user">
+            <ng-container *ngIf="isLogged">
                 <div class="login"
                     id="dropdown">
-                    <a class="display-name" href="#">Welcome {{user.displayName}}</a>
+                    <a class="display-name" href="#">
+						Welcome {{(currentUser$ | async)?.displayName}}
+					</a>
                     <div class="nav-user"
                         role="tablist"
                         #navdrop

@@ -24,8 +24,9 @@ export class AppComponent implements OnInit {
     if (token === null) {
       this.accountService.loadCurrentUser(null);
     }
-
-    this.accountService.isLogged;
+    else{
+      this.accountService.isLoggedIn();
+    }
   }
 
   loadBasket() {

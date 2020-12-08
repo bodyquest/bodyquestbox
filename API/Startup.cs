@@ -1,5 +1,6 @@
 namespace API
 {
+    using System.IO;
     using API.Extensions;
     using API.Helpers;
     using API.Middleware;
@@ -11,6 +12,7 @@ namespace API
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.FileProviders;
     using StackExchange.Redis;
 
     public class Startup
@@ -68,17 +70,21 @@ namespace API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseMiddleware<ExceptionMiddleware>();
-
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseStaticFiles();
+            // app.UseStaticFiles(new StaticFileOptions
+            // {
+            //     FileProvider = new PhysicalFileProvider
+            //     (
+            //         Path.Combine(Directory.GetCurrentDirectory(), "NEW-DIRECTORY-WITH-STATIC-FILES")
+            //     ),
+            //     RequestPath = "/NAME-OF-DIRECTORY-LOWERCASE"
+            // });
+            // change url in appsettings.Development.json ->"ApiUrl": "https://localhost:5001/NAME-OF-DIRECTORY"
 
             app.UseCors("CorsPolicy");
-
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -87,6 +93,7 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }
