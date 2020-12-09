@@ -9,7 +9,10 @@ namespace Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<ProductCategory> builder)
         {
-            builder.HasOne(pc => pc.Parent)
+            //builder.HasKey( i=> i.Id );
+
+            builder
+                   .HasOne(pc => pc.Parent)
                    .WithMany(pc => pc.Children)
                    .HasForeignKey(pc => pc.ParentId);
         }

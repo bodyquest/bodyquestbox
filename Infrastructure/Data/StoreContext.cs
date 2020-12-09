@@ -10,8 +10,11 @@ namespace Infrastructure.Data
 
     public class StoreContext : DbContext
     {
+        //private readonly bool turnOfIdentity = false;
         public StoreContext(DbContextOptions<StoreContext> options) 
-         : base(options) { }
+         : base(options) {
+             //this.turnOfIdentity = turnOfIdentity;
+         }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }

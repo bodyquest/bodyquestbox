@@ -8,6 +8,7 @@ namespace Infrastructure.Data
     using System.Threading.Tasks;
     using Core.Entities;
     using Core.Entities.OrderAggregate;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
 
     public class StoreContextSeed
@@ -24,12 +25,22 @@ namespace Infrastructure.Data
 
                     var categories = JsonSerializer.Deserialize<List<ProductCategory>>(categoryData);
 
-                    foreach (var item in categories)
-                    {
-                        context.ProductCategories.Add(item);
-                    }
-
-                    await context.SaveChangesAsync();
+                        try
+                        {
+                            foreach (var item in categories)
+                            {
+                                context.ProductCategories.Add(item);
+                                context.Database.OpenConnection();
+                                await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.ProductCategories ON");
+                                context.Add(item);
+                            }
+                        }
+                        finally
+                        {
+                            await context.SaveChangesAsync();
+                            await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.ProductCategories OFF");
+                            context.Database.CloseConnection();
+                        }
                 }
 
                 if (!context.Products.Any())
@@ -38,12 +49,22 @@ namespace Infrastructure.Data
 
                     var products = JsonSerializer.Deserialize<List<Product>>(productData);
 
-                    foreach (var item in products)
-                    {
-                        context.Products.Add(item);
-                    }
-
-                    await context.SaveChangesAsync();
+                        try
+                        {
+                            foreach (var item in products)
+                            {
+                                context.Products.Add(item);
+                                context.Database.OpenConnection();
+                                await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.Products ON");
+                                context.Add(item);
+                            }
+                        }
+                        finally
+                        {
+                            await context.SaveChangesAsync();
+                            await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.Products OFF");
+                            context.Database.CloseConnection();
+                        }
                 }
 
                 if (!context.Products_ProductCategories.Any())
@@ -66,12 +87,22 @@ namespace Infrastructure.Data
 
                     var options = JsonSerializer.Deserialize<List<Option>>(optionsData);
 
-                    foreach (var item in options)
+                    try
                     {
-                        context.Options.Add(item);
+                        foreach (var item in options)
+                        {
+                            context.Options.Add(item);
+                            context.Database.OpenConnection();
+                            await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.Options ON");
+                            context.Add(item);
+                        }
                     }
-
-                    await context.SaveChangesAsync();
+                    finally
+                    {
+                        await context.SaveChangesAsync();
+                        await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.Options OFF");
+                        context.Database.CloseConnection();
+                    }
                 }
 
                 if (!context.OptionValues.Any())
@@ -80,12 +111,22 @@ namespace Infrastructure.Data
 
                     var optionValues = JsonSerializer.Deserialize<List<OptionValue>>(optionValuesData);
 
-                    foreach (var item in optionValues)
+                    try
                     {
-                        context.OptionValues.Add(item);
+                        foreach (var item in optionValues)
+                        {
+                            context.OptionValues.Add(item);
+                            context.Database.OpenConnection();
+                            await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.OptionValues ON");
+                            context.Add(item);
+                        }
                     }
-
-                    await context.SaveChangesAsync();
+                    finally
+                    {
+                        await context.SaveChangesAsync();
+                        await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.OptionValues OFF");
+                        context.Database.CloseConnection();
+                    }
                 }
 
                 if (!context.ProductVariantOptions.Any())
@@ -94,26 +135,46 @@ namespace Infrastructure.Data
 
                     var productVariantOptions = JsonSerializer.Deserialize<List<ProductVariantOption>>(productVariantOptionsData);
 
-                    foreach (var item in productVariantOptions)
+                    try
                     {
-                        context.ProductVariantOptions.Add(item);
+                        foreach (var item in productVariantOptions)
+                        {
+                            context.ProductVariantOptions.Add(item);
+                            context.Database.OpenConnection();
+                            await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.ProductVariantOptions ON");
+                            context.Add(item);
+                        }
                     }
-
-                    await context.SaveChangesAsync();
+                    finally
+                    {
+                        await context.SaveChangesAsync();
+                        await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.ProductVariantOptions OFF");
+                        context.Database.CloseConnection();
+                    }
                 }
-
+                
                 if (!context.ProductVariants.Any())
                 {
                     var productVariantsData = File.ReadAllText("../Infrastructure/Data/SeedData/ProductVariants_json.json");
 
                     var productVariants = JsonSerializer.Deserialize<List<ProductVariant>>(productVariantsData);
 
-                    foreach (var item in productVariants)
+                    try
                     {
-                        context.ProductVariants.Add(item);
+                        foreach (var item in productVariants)
+                        {
+                            context.ProductVariants.Add(item);
+                            context.Database.OpenConnection();
+                            await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.ProductVariants ON");
+                            context.Add(item);
+                        }
                     }
-
-                    await context.SaveChangesAsync();
+                    finally
+                    {
+                        await context.SaveChangesAsync();
+                        await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.ProductVariants OFF");
+                        context.Database.CloseConnection();
+                    }
                 }
 
                 if (!context.SKUs.Any())
@@ -122,27 +183,48 @@ namespace Infrastructure.Data
 
                     var Skus = JsonSerializer.Deserialize<List<SKU>>(skuData);
 
-                    foreach (var item in Skus)
+                    try
                     {
-                        context.SKUs.Add(item);
+                        foreach (var item in Skus)
+                        {
+                            context.SKUs.Add(item);
+                            context.Database.OpenConnection();
+                            await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.SKUs ON");
+                            context.Add(item);
+                        }
                     }
-
-                    await context.SaveChangesAsync();
+                    finally
+                    {
+                        await context.SaveChangesAsync();
+                        await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.SKUs OFF");
+                        context.Database.CloseConnection();
+                    }
                 }
 
                 // ----------------------------------- //
+
                 if (!context.DeliveryMethods.Any())
                 {
                     var dmData = File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
 
                     var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(dmData);
 
-                    foreach (var item in methods)
+                    try
                     {
-                        context.DeliveryMethods.Add(item);
+                        foreach (var item in methods)
+                        {
+                            context.DeliveryMethods.Add(item);
+                            context.Database.OpenConnection();
+                            await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.DeliveryMethods ON");
+                            context.Add(item);
+                        }
                     }
-
-                    await context.SaveChangesAsync();
+                    finally
+                    {
+                        await context.SaveChangesAsync();
+                        await context.Database.ExecuteSqlCommandAsync("SET IDENTITY_INSERT dbo.DeliveryMethods OFF");
+                        context.Database.CloseConnection();
+                    }
                 }
             }
             catch (Exception ex)

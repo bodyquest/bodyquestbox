@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class MSSQLInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,11 +12,11 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ShortName = table.Column<string>(nullable: true),
                     DeliveryTime = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(type: "decimal(8,2)", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(8,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,7 +28,7 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -40,7 +41,7 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     ParentId = table.Column<int>(nullable: true)
@@ -61,12 +62,12 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(maxLength: 90, nullable: false),
-                    ShortDescription = table.Column<string>(maxLength: 700, nullable: false),
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    ShortDescription = table.Column<string>(nullable: false),
                     LongDescription = table.Column<string>(nullable: false),
-                    GrossWeight = table.Column<double>(nullable: false),
-                    Price = table.Column<double>(type: "decimal(8,2)", nullable: false),
+                    GrossWeight = table.Column<decimal>(nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     PictureUrl = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -79,16 +80,16 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     BuyerEmail = table.Column<string>(nullable: true),
-                    OrderDate = table.Column<long>(nullable: false),
+                    OrderDate = table.Column<DateTimeOffset>(nullable: false),
                     ShipToAddress_FirstName = table.Column<string>(nullable: true),
                     ShipToAddress_LastName = table.Column<string>(nullable: true),
                     ShipToAddress_Street = table.Column<string>(nullable: true),
                     ShipToAddress_City = table.Column<string>(nullable: true),
                     ShipToAddress_PostCode = table.Column<string>(nullable: true),
                     DeliveryMethodId = table.Column<int>(nullable: true),
-                    Subtotal = table.Column<double>(nullable: false),
+                    Subtotal = table.Column<decimal>(nullable: false),
                     Status = table.Column<string>(nullable: false),
                     PaymentIntentId = table.Column<string>(nullable: true)
                 },
@@ -132,7 +133,7 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(nullable: false),
                     OptionId = table.Column<int>(nullable: false)
                 },
@@ -158,9 +159,9 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SkuName = table.Column<string>(maxLength: 60, nullable: false),
-                    Price = table.Column<double>(type: "decimal(8,2)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     StockQty = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false)
                 },
@@ -180,8 +181,8 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Price = table.Column<double>(type: "decimal(18, 2)", nullable: false),
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     ItemOrdered_ProductItemId = table.Column<int>(nullable: true),
                     ItemOrdered_ProductName = table.Column<string>(nullable: true),
@@ -204,7 +205,7 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ValueName = table.Column<string>(nullable: true),
                     OptionId = table.Column<int>(nullable: false),
                     SKUId = table.Column<int>(nullable: true)
@@ -231,7 +232,7 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(nullable: false),
                     OptionValueId = table.Column<int>(nullable: false)
                 },

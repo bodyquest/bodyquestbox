@@ -24,7 +24,43 @@ namespace API
         }
         // public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureDevelopmentServices(IServiceCollection services)
+        {
+            services.AddDbContext<StoreContext>(options =>
+                options.UseSqlServer(
+                    this.configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppIdentityDbContext>(x => 
+            {
+                x.UseSqlServer(this.configuration.
+                    GetConnectionString("IdentityConnection"));
+            });
+
+            ConfigureServices(services);
+
+            // services.AddDbContext<StoreContext>(x => x.UseSqlite(
+            //     this.configuration.GetConnectionString("DefaultConnection")));
+            
+            // services.AddDbContext<AppIdentityDbContext>(x => 
+            // {
+            //     x.UseSqlite(this.configuration.
+            //         GetConnectionString("IdentityConnection"));
+            // });
+        }
+
+        // public void ConfigureProductionServices(IServiceCollection services)
+        // {
+        //     services.AddDbContext<StoreContext>(options =>
+        //         options.UseSqlServer(
+        //             this.configuration.GetConnectionString("DefaultConnection")));
+        //     services.AddDbContext<AppIdentityDbContext>(x => 
+        //     {
+        //         x.UseSqlServer(this.configuration.
+        //             GetConnectionString("IdentityConnection"));
+        //     });
+
+        //     ConfigureServices(services);
+        // }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MappingProfiles));
@@ -35,13 +71,6 @@ namespace API
                     .SerializerSettings
                     .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
-            services.AddDbContext<StoreContext>(x => x.UseSqlite(
-                this.configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<AppIdentityDbContext>(x => 
-            {
-                x.UseSqlite(this.configuration.
-                    GetConnectionString("IdentityConnection"));
-            });
 
             services.AddSingleton<IConnectionMultiplexer>(c => 
             {
