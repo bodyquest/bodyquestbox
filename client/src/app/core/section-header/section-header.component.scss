@@ -5,18 +5,21 @@
 .breadcrumbs-container-wrapper {
     display: flex;
     width: 100%;
+    
 }
 
 .breadcrumbs-container {
     flex: 0 0 100%;
     // width: 100%;
     padding: 0em 3em;
+    
 }
 
 .breadcrumbs {
     display: flex;
     width: 100%;
     align-items: center;
+    height: 3.5em;
 }
 
 .breadcrumb-nav {

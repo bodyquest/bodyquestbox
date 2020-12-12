@@ -38,3 +38,107 @@
     border: none;
     cursor: pointer;
 }
+
+label {
+    position: relative;
+    margin: 1em 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    cursor: pointer;
+    
+    a {
+      text-decoration: none;
+      color:  #7a7a8c;
+    }
+  }
+
+  label > strong {
+      margin-right: 0.8em;
+  }
+  
+  label:active,
+  label:hover {
+      background: linear-gradient(
+        to right, 
+        #ff8a00, 
+        #da1b60
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+  
+  .checkbox {
+    position: relative;
+    margin-right: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    // width: 36px;
+    // height: 36px;
+  
+    fill: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  
+  .checkbox > rect {
+      stroke: #bcbfc2;
+  }
+  
+  // input {
+  //     display: none;
+  // }
+  
+  input {
+      display: none;
+    
+      &:checked + label {
+        .checkbox {
+          #colors {
+            stroke: url(#gradient);
+            stroke-dasharray: 145;
+            stroke-dashoffset: 145;
+            animation: checked 1000 * 1ms ease forwards;
+          }
+    
+          path,
+          polyline {
+            stroke: url(#gradient);
+            stroke-dasharray: 40;
+            stroke-dashoffset: 40;
+            animation: checked 1000 * 1ms ease forwards;
+          }
+          
+          path {        
+            stroke-dasharray: 220;
+            stroke-dashoffset: 220;
+          }
+        }
+      }
+    }
+  
+    input:checked + label .checkbox #colors {
+      stroke: url(#gradient);
+      stroke-dasharray: 145;
+      stroke-dashoffset: 145;
+      animation: checked 1000ms ease forwards;
+  }
+  
+  input:checked + label .checkbox path, input:checked + label .checkbox polyline {
+      stroke: url(#gradient);
+      stroke-dasharray: 40;
+      stroke-dashoffset: 40;
+      animation: checked 1000ms ease forwards;
+  }
+  
+  
+  input:checked + label .checkbox path {
+      stroke-dasharray: 220;
+      stroke-dashoffset: 220;
+  }
+  
+  @keyframes checked {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }

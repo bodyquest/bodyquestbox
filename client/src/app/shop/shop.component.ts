@@ -59,7 +59,7 @@ export class ShopComponent implements OnInit, AfterViewInit {
       });
   }
 
-  // NOT IMPLEMENTED YET
+  // NOT IMPLEMENTED YET in the API
   // onCategorySelected() {
   //   this.shopParams.categoryIdSelected = categoryId;
   //   this.shopParams.pageNumber = 1;

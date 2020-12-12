@@ -2,6 +2,9 @@
 
 # ssl
 ssl
+.crt
+.key
+.cnf
 
 # compiled output
 /dist

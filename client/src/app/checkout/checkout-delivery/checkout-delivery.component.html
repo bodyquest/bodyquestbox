@@ -10,9 +10,36 @@
                    id={{method.id}}
                    value={{method.id}}
                    formControlName="deliveryMethod"
-                   class="custom-control-input">
+                   class="custom-control-input"
+                   checked="checked">
             <label for="{{method.id}}"
-                   class="custom-control-label">
+                   >
+                   <svg class="checkbox"
+                   viewbox="0 0 36 36">
+                  <defs>
+                      <linearGradient id="gradient"
+                                      x1="0"
+                                      y1="0"
+                                      x2="1"
+                                      y2="1">
+                          <stop offset="0%"
+                                stop-color="#ff8a00"></stop>
+                          <stop offset="100%"
+                                stop-color="#da1b60"></stop>
+                      </linearGradient>
+                  </defs>
+                  <rect x="2"
+                        y="2"
+                        width="32px"
+                        height="32px"></rect>
+                  <rect id="colors"
+                        x="2"
+                        y="2"
+                        width="32px"
+                        height="32px"></rect>
+                  <path d="M 4 4 L 12 4 L 4 20 L 30 6 L 4 30 L 34 15 L 13 32 L 33 30 L 33 32">
+                  </path>
+              </svg>
                 <strong>{{method.shortName}} - {{method.price}}</strong>
                 <br>
                 <span class="label-description">{{method.description}}</span>

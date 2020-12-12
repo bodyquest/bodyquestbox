@@ -58,6 +58,11 @@ body::after {
   border-radius: 0;
 }
 
+.xng-breadcrumb-root .xng-breadcrumb-item:hover:not(:last-child) {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 label.xng-breadcrumb-trail {
   margin-bottom: 0;
   color: #E72B3F;

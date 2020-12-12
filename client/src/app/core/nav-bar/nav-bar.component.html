@@ -52,45 +52,46 @@
         <section class="right-nav-section">
             <ng-container *ngIf="!isLogged">
                 <div class="login"
-                    id="dropdown">
+                     id="dropdown">
                     <a><i class="fa fa-user-o"></i></a>
                     <div class="nav"
-                        role="tablist"
-                        #navdrop
-                        id="navdrop">
+                         role="tablist"
+                         #navdrop
+                         id="navdrop">
                         <a class="nav-link "
-                        routerLink="/account/login"
-                        role="tab"
-                        data-toggle="tab">Login</a>
+                           routerLink="/account/login"
+                           role="tab"
+                           data-toggle="tab">Login</a>
                         <a class="nav-link "
-                        routerLink="/account/register"
-                        role="tab"
-                        data-toggle="tab">Register</a>
+                           routerLink="/account/register"
+                           role="tab"
+                           data-toggle="tab">Register</a>
                     </div>
                 </div>
             </ng-container>
             <ng-container *ngIf="isLogged">
                 <div class="login"
-                    id="dropdown">
-                    <a class="display-name" href="#">
-						Welcome {{(currentUser$ | async)?.displayName}}
-					</a>
+                     id="dropdown">
+                    <a class="display-name"
+                       href="#">
+                        Welcome {{(currentUser$ | async)?.displayName}}
+                    </a>
                     <div class="nav-user"
-                        role="tablist"
-                        #navdrop
-                        id="navdrop">
+                         role="tablist"
+                         #navdrop
+                         id="navdrop">
                         <a class="nav-link "
-                        routerLink="/orders"
-                        role="tab"
-                        data-toggle="tab">Orders</a>
+                           routerLink="/orders"
+                           role="tab"
+                           data-toggle="tab">Orders</a>
                         <a class="nav-link "
-                        routerLink="/basket"
-                        role="tab"
-                        data-toggle="tab">Basket</a>
+                           routerLink="/basket"
+                           role="tab"
+                           data-toggle="tab">Basket</a>
                         <a class="nav-link logout"
-                        (click)="logout()"
-                        role="tab"
-                        data-toggle="tab">Logout</a>
+                           (click)="logout()"
+                           role="tab"
+                           data-toggle="tab">Logout</a>
                     </div>
                 </div>
             </ng-container>
@@ -104,11 +105,76 @@
                 </a>
 
             </div>
+            
             <div class="hamburger">
-                <div class="row"></div>
-                <div class="row"></div>
-                <div class="row"></div>
-                <div class="row"></div>
+                <input type="checkbox"
+                       id="check"
+                       class="check visuallyHidden">
+                <label for="check" class="check-btn">
+                    <div class="ham ham2">
+                        <span class="bar bar1"></span>
+                        <span class="bar bar2"></span>
+                        <span class="bar bar3"></span>
+                        <span class="bar bar4"></span>
+                    </div>
+                </label>
+
+                <ul class="mobile-nav">
+                    <nd-container *ngIf="!isLogged">
+                        <li>
+                            <a class="nav-link "
+                               routerLink="/account/login"
+                               role="tab"
+                               data-toggle="tab">Login
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link "
+                               routerLink="/account/register"
+                               role="tab"
+                               data-toggle="tab">Register
+                            </a>
+                        </li>
+                    </nd-container>
+                    <li>
+                        <a routerLink="/test-error"
+                           role="tab"
+                           data-toggle="tab">Errors
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/shop"
+                           routerLinkActive="activated"
+                           [routerLinkActiveOptions]="{exact:true}"
+                           role="tab"
+                           data-toggle="tab">ALL PRODUCTS
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/shop/new"
+                           routerLinkActive="activated"
+                           [routerLinkActiveOptions]="{exact:true}"
+                           role="tab"
+                           data-toggle="tab">NEW PRODUCTS
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/shop/barsandplates"
+                           routerLinkActive="activated"
+                           [routerLinkActiveOptions]="{exact:true}"
+                           role="tab"
+                           data-toggle="tab">BARS & PLATES
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/shop/bestsellers"
+                           routerLinkActive="activated"
+                           [routerLinkActiveOptions]="{exact:true}"
+                           role="tab"
+                           data-toggle="tab">BESTSELLERS
+                        </a>
+                    </li>
+                </ul>
             </div>
         </section>
 

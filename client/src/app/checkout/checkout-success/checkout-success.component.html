@@ -3,7 +3,7 @@
         Thank you! We received your order.
     </h2>
     <ng-container *ngIf="order">
-        <h4>Order Number #: </h4>
+        <h4>Order Number #: {{order?.id}}</h4>
     </ng-container>
     <p>Your order will be shipped soon!</p>
     <button *ngIf="order"

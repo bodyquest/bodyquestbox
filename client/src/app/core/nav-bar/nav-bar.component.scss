@@ -7,6 +7,8 @@ header {
 .wrapper {
     max-width: 100vw;
     margin: 0 auto;
+    display: flex;
+    align-content: center;
 }
 
 a {
@@ -24,12 +26,8 @@ a {
     border-image-source: linear-gradient(90deg, #E72B3F,#ff8a00);
 }
 
-.site-header nav {
-    margin: 0.2em 0.5em 0.2em 0.5em;
-}
-
 .site-branding .site-title {
-    margin: 0.2em 0 0 0;
+    margin: 0;
     padding: 0;
     font-size: 2.8em;
     letter-spacing: 0.05em;
@@ -37,14 +35,15 @@ a {
 }
 
 .site-branding .site-title a {
+    margin-top: 0.2em;
+    height: 2.8em;
     font-family: 'H_Gothic', sans-serif;
     color: #ffffff;
     text-decoration: none;
     outline: none;
 }
-
 .site-branding > .site-description {
-    margin: -0.2em 0 0.3em 0;
+    margin: -0.4em 0 0.3em 0;
     padding-left: 0.1em;
     text-transform: uppercase;
     font-size: 1.54em;
@@ -52,12 +51,10 @@ a {
     letter-spacing: 0.3em;
     
 }
-
 .site-branding .site-description a {
     font-family: 'Alrns', sans-serif;
     color: rgb(250, 17, 67);
 }
-
 .site-branding .site-description a > span {
     font-family: 'Alrns', sans-serif;
     color: rgb(251, 251, 251);
@@ -65,13 +62,15 @@ a {
     opacity: 0.8;
 }
 
+.site-nav {
+    margin: 0.6em 0.5em 0.2em 0.5em;
+}
 .site-nav ul {
     margin: 0;
     padding: 0;
     display: flex;
     justify-items: flex-start;
 }
-
 .site-nav li {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1em;
@@ -79,7 +78,6 @@ a {
     list-style: none outside;
     padding: 0 0.1em;
 }
-
 .site-nav li:nth-child(1) {
     margin: 0.3em 0;
 }
@@ -95,7 +93,6 @@ a {
         color: #EE1143;
     }
 }
-
 .site-nav li:nth-child(1) a{
     background: #E72B3F;
     border: none;
@@ -105,7 +102,6 @@ a {
     text-decoration: none;
     padding: 0.3em 2em;
 }
-
 .site-nav a:hover {
     color: rgb(216, 216, 216);
     transition: color .3s ease-in-out;
@@ -118,6 +114,7 @@ a {
 .main-nav {
     display: flex;
     flex-flow: column wrap;
+    justify-content: flex-start;
     align-items: flex-start;
     width: 47vw;
     padding-top: 0.1em;
@@ -128,7 +125,7 @@ a {
     flex: 1 1 100%;
     align-self: stretch;
     background: rgba(255,255,255,.80);
-    margin: 0.8em 0.5em 0 0.5em;
+    margin: 1.2em 0.5em 0 0.5em;
     height: 0.8em;
     // width: 35em;
     align-items: center;
@@ -161,4 +158,24 @@ a {
 .search-field .fa-search {
     font-size: 1.5em;
     color:  #777;
+}
+
+@media screen and (min-width: 320px) {
+    .site-branding .site-title {
+      font-size: calc(1.5em + 14 * ((100vw - 320px) / 680));
+    }
+
+    .site-branding > .site-description {
+        font-size: calc(0.85em + 6.5 * ((100vw - 320px) / 680));
+    }
+
+    .site-nav {
+        font-size: calc(0.6em + 2.7 * ((100vw - 320px) / 680));
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .search-field {
+        margin-top: 0;
+    }
 }
