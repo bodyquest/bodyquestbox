@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ICategory } from '../shared/models/category';
 import { IPagination, IProduct } from '../shared/models/pagination';
 import { ShopParams } from '../shared/models/shopParams';
@@ -22,8 +23,21 @@ export class ShopComponent implements OnInit, AfterViewInit {
     {name: 'Price: High to Low', value: 'priceDesc'}
   ];
 
-  constructor(private shopService: ShopService) {
-    this.shopParams = this.shopService.getShopParams();
+  constructor(
+    private shopService: ShopService,
+    private router: Router) {
+      const navigation = this.router.getCurrentNavigation();
+      const state = navigation && navigation.extras && navigation.extras.state;
+      if (state) {
+        const params = this.shopService.getShopParams();
+        params.search = state as unknown as string;
+
+        params.pageNumber = 1;
+        this.shopService.setShopParams(params);
+        this.getProducts();
+      }
+      
+      this.shopParams = this.shopService.getShopParams();
   }
 
   ngOnInit(): void {

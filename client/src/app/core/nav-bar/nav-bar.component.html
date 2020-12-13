@@ -10,15 +10,21 @@
 
         <section class="main-nav">
             <section class="search-field">
-                <input type="search">
-                <button>
+                <input (keyup.enter)="onSearch()"
+                       type="search"
+                       #search
+                       #default>
+                <button type="submit"
+                        (click)="onSearch()">
                     <i class="fa fa-search"></i>
                 </button>
             </section>
             <nav class="site-nav">
                 <ul>
                     <li>
-                        <a routerLink="/test-error">Errors
+                        <a routerLink="/shop"
+                           routerLinkActive="activated"
+                           [routerLinkActiveOptions]="{exact:true}">SHOP
                         </a>
                     </li>
                     <li>
@@ -105,12 +111,13 @@
                 </a>
 
             </div>
-            
+
             <div class="hamburger">
                 <input type="checkbox"
                        id="check"
                        class="check visuallyHidden">
-                <label for="check" class="check-btn">
+                <label for="check"
+                       class="check-btn">
                     <div class="ham ham2">
                         <span class="bar bar1"></span>
                         <span class="bar bar2"></span>
