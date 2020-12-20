@@ -7,7 +7,6 @@ h6 { font-size: 1.0em;}
 
 .site-media {
     background: transparent;
-    height: 90vh;
     overflow: hidden;
     position: relative;
 }
@@ -15,7 +14,6 @@ h6 { font-size: 1.0em;}
 .site-media img {
     display: block;
     width: 100%;
-    height: 90vh;
     object-fit: cover;
     object-position: center;
 }
@@ -29,6 +27,22 @@ h6 { font-size: 1.0em;}
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+@media screen and (min-width: 1200px) {
+
+    .site-media {
+        height: 90vh;
+    }
+
+    .site-media img {
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .site-media img {
+    }
 }
 
 .hero-text-wrapper {
@@ -178,4 +192,62 @@ h6 { font-size: 1.0em;}
 
 .entry:nth-child(even) .entry-content {
     margin: 2em -2em 6em 2em;
+}
+
+@media screen and (max-width: 600px) {
+
+    .site-media {
+        height: 60vh;
+    }
+
+    .site-media img {
+        height: 60vh;
+    }
+
+    .hero-text-wrapper {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+
+        position: absolute;
+        /* margin-left: auto;
+        margin-right: auto; */
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90vw;
+    }
+
+    .hero-text-wrapper h2:first-child {
+        margin-top: auto;
+        margin-bottom: 0.8em;
+    }
+
+    h2 {
+        
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    .hero-text-wrapper > p {
+        font-size: 0.9em;
+        padding-top: 1em;
+        text-align: center;
+    }
+
+    .social {
+        padding-top: 1em;
+        justify-content: center;
+        margin-bottom: 1em;
+    }
+
+    .social li:last-child {
+        margin-right: 0;
+    }
+
+    .social a {
+        width: 2.4em;
+        height: 2.4em;
+    }
 }

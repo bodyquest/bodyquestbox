@@ -131,6 +131,7 @@ export class BasketService {
         console.log(error);
       });
   }
+  
   private calculateTotals(): void {
     const basket = this.getCurrentBasketValue();
     const shipping = this.shipping;

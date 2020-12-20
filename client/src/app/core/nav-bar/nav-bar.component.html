@@ -1,6 +1,11 @@
 <header class="site-header">
     <div class="wrapper">
         <div class="site-branding">
+            <a routerLink="/"
+               class="site-logo">
+                <img src="../../../assets/images/Site-Logo.svg"
+                     alt="">
+            </a>
             <p class="site-title"><a routerLink="/">BODYQUEST</a></p>
             <p class="site-description">
                 <a routerLink="/"><span>prepare for </span>intensity
@@ -86,7 +91,7 @@
                          role="tablist"
                          #navdrop
                          id="navdrop">
-                        <a class="nav-link "
+                        <a class="nav-link"
                            routerLink="/orders"
                            role="tab"
                            data-toggle="tab">Orders</a>
@@ -109,7 +114,6 @@
                     <div *ngIf="(basket$ | async) as basket"
                          class="cart-qty">{{basket?.items.length}}</div>
                 </a>
-
             </div>
 
             <div class="hamburger">
@@ -127,26 +131,48 @@
                 </label>
 
                 <ul class="mobile-nav">
-                    <nd-container *ngIf="!isLogged">
+                    <ng-container *ngIf="!isLogged">
                         <li>
-                            <a class="nav-link "
-                               routerLink="/account/login"
+                            <a routerLink="/account/login"
                                role="tab"
                                data-toggle="tab">Login
                             </a>
                         </li>
-                        <li>
-                            <a class="nav-link "
-                               routerLink="/account/register"
+                        <li class="mobile-register">
+                            <a routerLink="/account/register"
                                role="tab"
                                data-toggle="tab">Register
                             </a>
                         </li>
-                    </nd-container>
+                    </ng-container>
+                    <ng-container *ngIf="isLogged">
+                        <li>
+                            <a
+                               routerLink="/orders"
+                               role="tab"
+                               data-toggle="tab">Orders
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                               routerLink="/basket"
+                               role="tab"
+                               data-toggle="tab">Basket
+                            </a>
+                        </li>
+                        <li class="mobile-logout">
+                            <a
+                               (click)="logout()"
+                               role="tab"
+                               data-toggle="tab">Logout
+                            </a>
+                        </li>
+
+                    </ng-container>
                     <li>
-                        <a routerLink="/test-error"
+                        <a routerLink="/shop"
                            role="tab"
-                           data-toggle="tab">Errors
+                           data-toggle="tab">SHOP
                         </a>
                     </li>
                     <li>

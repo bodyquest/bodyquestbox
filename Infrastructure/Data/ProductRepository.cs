@@ -40,7 +40,16 @@ namespace Infrastructure.Data
                         {
                             OptionId = pvo.OptionValue.Option.Id,
                             ValueName = pvo.OptionValue.ValueName
-                        })
+                        }),
+                    SKUs = p.SKUs
+                            .Select(sk => new SKUDto
+                            {
+                                Id = sk.Id,
+                                Name = sk.SkuName,
+                                Price = sk.Price,
+                                Weight = sk.Weight,
+                                StockQty = sk.StockQty
+                            })
                 })
                 .FirstOrDefaultAsync();
             
@@ -91,6 +100,14 @@ namespace Infrastructure.Data
                             {
                                 OptionId = pvo.OptionValue.Option.Id,
                                 ValueName = pvo.OptionValue.ValueName
+                            }),
+                        SKUs = p.SKUs
+                            .Select(sk => new SKUDto
+                            {
+                                Id = sk.Id,
+                                Name = sk.SkuName,
+                                Price = sk.Price,
+                                StockQty = sk.StockQty
                             })
                     })
                     .OrderBy(x => x.Price)
@@ -120,6 +137,14 @@ namespace Infrastructure.Data
                             {
                                 OptionId = pvo.OptionValue.Option.Id,
                                 ValueName = pvo.OptionValue.ValueName
+                            }),
+                        SKUs = p.SKUs
+                            .Select(sk => new SKUDto
+                            {
+                                Id = sk.Id,
+                                Name = sk.SkuName,
+                                Price = sk.Price,
+                                StockQty = sk.StockQty
                             })
                     })
                     .OrderByDescending(x => x.Price)
@@ -149,6 +174,14 @@ namespace Infrastructure.Data
                             {
                                 OptionId = pvo.OptionValue.Option.Id,
                                 ValueName = pvo.OptionValue.ValueName
+                            }),
+                        SKUs = p.SKUs
+                            .Select(sk => new SKUDto
+                            {
+                                Id = sk.Id,
+                                Name = sk.SkuName,
+                                Price = sk.Price,
+                                StockQty = sk.StockQty
                             })
                     })
                     .OrderBy(x => x.Name)
@@ -180,6 +213,14 @@ namespace Infrastructure.Data
                             {
                                 OptionId = pvo.OptionValue.Option.Id,
                                 ValueName = pvo.OptionValue.ValueName
+                            }),
+                        SKUs = p.SKUs
+                            .Select(sk => new SKUDto
+                            {
+                                Id = sk.Id,
+                                Name = sk.SkuName,
+                                Price = sk.Price,
+                                StockQty = sk.StockQty
                             })
                     })
                     .OrderBy(x => x.Price)
@@ -208,6 +249,14 @@ namespace Infrastructure.Data
                             {
                                 OptionId = pvo.OptionValue.Option.Id,
                                 ValueName = pvo.OptionValue.ValueName
+                            }),
+                        SKUs = p.SKUs
+                            .Select(sk => new SKUDto
+                            {
+                                Id = sk.Id,
+                                Name = sk.SkuName,
+                                Price = sk.Price,
+                                StockQty = sk.StockQty
                             })
                     })
                     .OrderByDescending(x => x.Price)
@@ -236,6 +285,14 @@ namespace Infrastructure.Data
                             {
                                 OptionId = pvo.OptionValue.Option.Id,
                                 ValueName = pvo.OptionValue.ValueName
+                            }),
+                        SKUs = p.SKUs
+                            .Select(sk => new SKUDto
+                            {
+                                Id = sk.Id,
+                                Name = sk.SkuName,
+                                Price = sk.Price,
+                                StockQty = sk.StockQty
                             })
                     })
                     .OrderBy(x => x.Name)

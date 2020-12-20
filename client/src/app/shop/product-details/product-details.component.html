@@ -1,23 +1,64 @@
-<section class="wrapper" *ngIf="product">
+<section class="wrapper"
+         *ngIf="product">
     <section class="image-container">
-        <img src={{product.pictureUrl}} alt="">
+        <img src={{product.pictureUrl}}
+             alt="">
     </section>
     <section class="product-main-info">
         <h2>{{product.name}}</h2>
 
-        <p>{{product.price | currency}}</p>
+        
+
+        <form #f="ngForm"
+              (change)="onChangeHandler(f.value)"
+              [formGroup]="optionsForm"
+              class="options-container">
+            <div class="option"
+                 *ngFor="let option of product.options">
+                <label for="{{option.name}}"
+                       class="option-name">{{option.name}}</label>
+
+                <select required
+                        formControlName="{{option.name}}"
+                        
+                        id="{{option.name}}">
+                    <option [value]=""
+                            disabled
+                            selected
+                            hidden>- Select {{option.name}} -</option>
+                    <ng-container *ngFor="let optionValue of product.optionValues">
+                        <ng-container *ngIf="optionValue.optionId === option.id">
+
+                            <option attr.data-name="{{optionValue.valueName}}">
+                                {{optionValue.valueName}}
+                            </option>
+
+                        </ng-container>
+                    </ng-container>
+                </select>
+            </div>
+        </form>
+
+        <p #skuPrice></p>
 
         <div class="qty">
-            <i (click)="decrementQuantity()" class="fa fa-minus-circle"></i>
+            <i (click)="decrementQuantity()"
+               class="fa fa-minus-circle"></i>
             <span>{{quantity}}</span>
-            <i (click)="incrementQuantity()" class="fa fa-plus-circle"></i>
-            <button (click)="addItemToBasket()" class="btn btn-outline-secondary">
+            <i (click)="incrementQuantity()"
+               class="fa fa-plus-circle"></i>
+            <button (click)="addItemToBasket()"
+                    [disabled]="f.invalid || isSoldOut"
+                    class="btn btn-outline-secondary">
                 Add to Cart
             </button>
         </div>
 
-        <div [innerHTML]="product.shortDescription" class="p-text"></div>
+        {{f.value | json}}
+        "form is invalid: "{{f.invalid}} " | product is sold out: "{{isSoldOut}}
+        <br>
+        <br>
+        <div [innerHTML]="product.shortDescription"
+             class="p-text"></div>
     </section>
 </section>
-
-

@@ -19,12 +19,14 @@ a {
 
 .navigation {
     display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
     flex: 1 1 100%;
     color: white;
 }
 
 .navigation section:not(:last-child) {
-    margin-right: 3em;
+    margin: 0 1.5em;
 }
 
 .navigation section h5 {
@@ -94,19 +96,6 @@ a {
     position: relative;
 }
 
-// .fa-instagram:after {
-//     content: "";
-//     position: absolute;
-//     left: 50%;
-//     top: 50%;
-//     transform: translate(-50%, -50%);
-//     width: 90%;
-//     height: 80%;
-//     border-radius: 5px;
-//     background: #ffffff;
-//     z-index: 0;
-// }
-
 .nav-five i {
     font-size: 1em;
     margin-right: 1em;
@@ -118,4 +107,22 @@ a {
     color: #999;
     font-size: 0.9em;
     font-weight: 200;
+}
+
+@media screen and (max-width: 600px) {
+    .site-footer {
+        padding: 1em 1.5em;
+    }
+
+    .navigation > section {
+        flex: 0 0 20%;
+    }
+
+    .navigation section:not(:last-child) {
+        margin: 0 1.5em;
+    }
+
+    .navigation section:last-child {
+        margin-bottom: 1em;
+    }
 }

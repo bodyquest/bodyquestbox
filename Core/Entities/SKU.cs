@@ -8,6 +8,8 @@ namespace Core.Entities
 
         public decimal Price { get; set; }
 
+        public decimal Weight { get; set; }
+
         public int StockQty { get; set; }
 
         public int ProductId { get; set; }

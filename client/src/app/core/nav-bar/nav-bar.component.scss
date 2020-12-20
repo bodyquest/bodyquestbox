@@ -26,12 +26,17 @@ a {
     border-image-source: linear-gradient(90deg, #E72B3F,#ff8a00);
 }
 
+.site-logo {
+    display: none;
+}
+
 .site-branding .site-title {
     margin: 0;
     padding: 0;
-    font-size: 2.8em;
+    //font-size: 2.8em;
     letter-spacing: 0.05em;
     font-weight: normal;
+    font-size: calc(1.5em + 14 * ((100vw - 320px) / 680));
 }
 
 .site-branding .site-title a {
@@ -46,10 +51,9 @@ a {
     margin: -0.4em 0 0.3em 0;
     padding-left: 0.1em;
     text-transform: uppercase;
-    font-size: 1.54em;
-    // margin-top: -0.3em;
+    //font-size: 1.54em;
     letter-spacing: 0.3em;
-    
+    font-size: calc(0.85em + 6.5 * ((100vw - 320px) / 680));
 }
 .site-branding .site-description a {
     font-family: 'Alrns', sans-serif;
@@ -64,6 +68,7 @@ a {
 
 .site-nav {
     margin: 0.6em 0.5em 0.2em 0.5em;
+    font-size: calc(0.6em + 2.7 * ((100vw - 320px) / 680));
 }
 .site-nav ul {
     margin: 0;
@@ -124,13 +129,14 @@ a {
     display: inline-flex;
     flex: 1 1 100%;
     align-self: stretch;
-    background: rgba(255,255,255,.80);
-    margin: 1.2em 0.5em 0 0.5em;
+    background: rgba(255,255,255,.95);
+    margin: 1.2em 1.6em 0 1.6em;
     height: 0.8em;
     // width: 35em;
     align-items: center;
     padding: 5px;
-    border-radius: 0.4em;
+    border-radius: 30px;
+    box-shadow: 0px 0px 0px 7px rgba(255,255,255,0.3);
 }
 
 .search-field input {
@@ -138,7 +144,7 @@ a {
     background: transparent;
     border: 0;
 
-    text-indent: 5px;
+    text-indent: 15px;
     font-size: 20px;
     color:  #777;
     font-family: Arial, Helvetica, sans-serif;
@@ -152,25 +158,109 @@ a {
     border-radius: 50%;
     cursor: pointer;
     padding: 0;
-    order: -1;
+    margin-right: 0.5em;
+    margin-bottom: 0.1em;
+    //order: -1;
 }
 
 .search-field .fa-search {
     font-size: 1.5em;
-    color:  #777;
+    color:  rgb(175, 175, 175);
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 900px) {
+    .site-header .wrapper {
+        justify-content: space-between;
+        padding: 0.5em 1.5em;
+    }
+
+    .site-branding {
+        margin-right: 1.2em;
+    }
+
     .site-branding .site-title {
-      font-size: calc(1.5em + 14 * ((100vw - 320px) / 680));
+        margin: 0;
+        padding: 0;
+        //font-size: 2.8em;
+        letter-spacing: 0.05em;
+        font-weight: normal;
+        font-size: 1.6em;
     }
-
+    
     .site-branding > .site-description {
-        font-size: calc(0.85em + 6.5 * ((100vw - 320px) / 680));
+        margin: -0.5em 0 0.3em 0;
+        padding-left: 0.1em;
+        text-transform: uppercase;
+        //font-size: 1.54em;
+        letter-spacing: 0.25em;
+        font-size: 0.9em;
     }
 
-    .site-nav {
-        font-size: calc(0.6em + 2.7 * ((100vw - 320px) / 680));
+    .search-field {
+        margin: 0;
+        height: 5px;
+        box-shadow: 0px 0px 0px 6px rgba(255,255,255,0.3);
+    }
+
+    .search-field input{
+        font-size: 1em;
+        width: 0;
+    }
+
+    .login {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .site-header .wrapper {
+        justify-content: space-between;
+        padding: 1em 1em;
+    }
+    .site-description {
+        display: none;
+    }
+
+    .site-title {
+        display: none;
+    }
+
+    .site-logo {
+        display: flex;
+    }
+    .site-logo > img {
+        height: 3em;
+        width: auto;
+        display: inline;
+    }
+
+    .login {
+        display: none;
+    }
+
+    .cart {
+        display: none;
+    }
+
+    .site-branding {
+        margin-right: 1.2em;
+    }
+
+    .main-nav {
+        margin: 0;
+        padding-left: 0;
+        //min-width: 180px;
+        flex: 1 1 100%;
+    }
+
+    .search-field {
+        margin: 0;
+        height: 5px;
+    }
+
+    .search-field input{
+        font-size: 1em;
+        width: 0;
     }
 }
 

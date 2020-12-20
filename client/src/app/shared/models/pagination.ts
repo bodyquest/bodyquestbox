@@ -16,6 +16,7 @@ export interface IProduct {
     pictureUrl: string;
     options: Option[];
     optionValues: OptionValue[];
+    skUs: SKU[];
   }
 
 interface OptionValue {
@@ -27,6 +28,14 @@ interface Option {
     id: number;
     name: string;
     optionValueNames: string[];
+}
+
+interface SKU {
+    id: number;
+    name: string;
+    price: number;
+    weight: number;
+    stockQty: number;
 }
 
 // added in #284, 3:00

@@ -70,3 +70,37 @@
 .qty span {
     font-size: 1.2em;
 }
+
+.options-container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    margin-top: 1em;
+}
+
+// .options-container:not(:last-child) {
+//     margin-bottom: 1em;
+// }
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+    margin-bottom: 1em;
+}
+
+select {
+    width: 60%;
+    margin-left: 0.5em;
+}
+
+select,
+select option {
+  color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+    text-align: center;
+  color: #bfbebe;
+}
